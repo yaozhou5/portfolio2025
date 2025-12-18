@@ -35,8 +35,8 @@ const projects: Record<
       "Create a scalable design system for future features",
     ],
   },
-  vibelab: {
-    title: "VibeLab",
+  clearfeed: {
+    title: "ClearFeed",
     category: "Product Design & Strategy",
     headline: "A tool recommendation platform for indie builders",
     description:
@@ -267,7 +267,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: "Afterhours", slug: "afterhours" },
-              { title: "VibeLab", slug: "vibelab" },
+              { title: "ClearFeed", slug: "clearfeed" },
               { title: "Project Three", slug: "project-three" },
             ].map((project, index) => (
               <Link

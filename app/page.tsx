@@ -27,7 +27,7 @@ export default function Home() {
       title: "Decentralized News Reading",
       description: "Award-winning Web3 News Reading App concept",
       image: "/Decentralized.png",
-      slug: "vibelab",
+      slug: "clearfeed",
     },
     {
       title: "Faster Co-Presenting, Less Friction",
