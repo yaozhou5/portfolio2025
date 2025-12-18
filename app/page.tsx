@@ -32,7 +32,7 @@ export default function Home() {
     {
       title: "Faster Co-Presenting, Less Friction",
       description: "Redesigned a key interaction for virtual classroom hosts",
-      image: "/HiLink Mockup.png",
+      image: "/Hilink Mockup.png",
       slug: "project-three",
     },
   ];
