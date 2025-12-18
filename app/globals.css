@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* Canela Font - for headings */
+@font-face {
+  font-family: 'Canela';
+  src: url('/Canela-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FreightDisp W03 Regular/Light - for body text and subtitles */
+/* Note: If Freight Display Regular or Light files exist, add them here */
+@font-face {
+  font-family: 'FreightDisp';
+  src: url('/FreightDisp W03 Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FreightDisp';
+  src: url('/FreightDisp W03 Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FreightDisp W03 Bold - kept for reference */
+@font-face {
+  font-family: 'FreightDisp';
+  src: url('/FreightDisp W03 Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FreightDisp W03 Bold Italic - for h2 headings */
+@font-face {
+  font-family: 'FreightDisp';
+  src: url('/FreightDisp W03 Bold Italic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Post Grotesk Regular - for body text and labels */
+@font-face {
+  font-family: 'Post Grotesk';
+  src: url('/Post Grotesk.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Post Grotesk Light - for subtitles */
+@font-face {
+  font-family: 'Post Grotesk';
+  src: url('/PostGrotesk-Light-BF6466f03318977.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Post Grotesk';
+  src: url('/PostGrotesk-LightItalic-BF6466f032cba75.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Kumlien Pro - for headings */
+@font-face {
+  font-family: 'Kumlien Pro';
+  src: url('/kumlien-pro-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kumlien Pro';
+  src: url('/kumlien-pro-italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Post Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated underscore for Selected work */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Gradient animation for GradientText */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Shine animation for ShinyText */
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+/* Radial layout responsive positioning */
+@media (min-width: 768px) {
+  .radial-node {
+    left: var(--desktop-x) !important;
+    top: var(--desktop-y) !important;
+  }
+}
+
+/* Hide scrollbar for timeline */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
