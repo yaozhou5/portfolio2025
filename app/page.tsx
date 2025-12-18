@@ -227,9 +227,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white relative">
       {/* Hero Section - Two-Column Layout */}
-      <div className="flex min-h-screen">
+      <div className="flex flex-col md:flex-row min-h-screen">
         {/* Left Column - Hero Text and Project Titles (Sticky) */}
-        <div className="w-[32%] sticky top-0 h-screen flex flex-col px-6 md:px-12 pt-8 pb-24 overflow-y-auto overflow-x-visible">
+        <div className="w-full md:w-[32%] md:sticky md:top-0 md:h-screen flex flex-col px-6 md:px-12 pt-8 pb-8 md:pb-24 overflow-y-auto overflow-x-visible">
           <div className="w-full overflow-visible">
             {/* Intro Text - Fades in/out based on hero visibility */}
             <div
@@ -238,7 +238,7 @@ export default function Home() {
               }`}
             >
               <p className="text-[15px] text-gray-500 mb-2 tracking-wider" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>Product Designer</p>
-              <h1 className="text-[48px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Kumlien Pro', serif", fontWeight: 400, fontSize: '65px' }}>
+              <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Kumlien Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
                 Yao Zhou
               </h1>
               <p className="text-lg md:text-[20px] text-gray-300 mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400 }}>
@@ -281,14 +281,14 @@ export default function Home() {
                         window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
                       }}
                     >
-                      <h2 className={`text-[26px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
+                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
                         activeProjectIndex === index 
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
                       }`} style={{ 
                         fontFamily: "'Kumlien Pro'", 
                         fontWeight: 400, 
-                        fontSize: '30px',
+                        fontSize: 'clamp(22px, 4vw, 30px)',
                         fontStyle: 'italic'
                       }}>
                         {project.title}
@@ -306,14 +306,14 @@ export default function Home() {
                         }
                       }}
                     >
-                      <h2 className={`text-[26px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
+                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
                         activeProjectIndex === index 
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
                       }`} style={{ 
                         fontFamily: "'Kumlien Pro'", 
                         fontWeight: 400, 
-                        fontSize: '30px',
+                        fontSize: 'clamp(22px, 4vw, 30px)',
                         fontStyle: 'italic'
                       }}>
                         {project.title}
@@ -332,7 +332,7 @@ export default function Home() {
         </div>
 
         {/* Right Column - Selected Work in Hero Area */}
-        <div className="w-[68%] flex flex-col px-6 md:px-12 py-24 relative">
+        <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12 py-12 md:py-24 relative">
           {/* Hero Sentinel - Used for Intersection Observer */}
           <div ref={heroRef} className="absolute top-0 left-0 w-full h-screen pointer-events-none" />
           
@@ -368,7 +368,7 @@ export default function Home() {
                           <img
                             src={project.image}
                             alt={project.title}
-                            className="w-[85%] h-[85%] object-cover"
+                            className="w-full md:w-[85%] h-full md:h-[85%] object-cover"
                           />
                         ) : (
                           <div className="w-full h-full bg-gray-900 flex items-center justify-center">
@@ -400,7 +400,7 @@ export default function Home() {
                           <img
                             src={project.image}
                             alt={project.title}
-                            className="w-[85%] h-[85%] object-cover"
+                            className="w-full md:w-[85%] h-full md:h-[85%] object-cover"
                           />
                         ) : (
                           <div className="w-full h-full bg-gray-900 flex items-center justify-center">
@@ -425,18 +425,18 @@ export default function Home() {
 
       {/* I build things with AI tools Section */}
       <section className="py-16 md:py-24 border-t border-gray-900">
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* Left Column - Aligned with Selected work titles */}
-          <div className="w-[32%] px-6 md:px-12">
+          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
-              className="text-3xl md:text-4xl mb-6 font-light text-white"
-              style={{ fontFamily: "'Kumlien Pro'", fontSize: '48px', lineHeight: '100%' }}
+              className="text-2xl md:text-4xl mb-6 font-light text-white"
+              style={{ fontFamily: "'Kumlien Pro'", fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%' }}
             >
               I build things with AI tools.
             </h2>
             
             <p 
-              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+              className="text-base md:text-xl text-gray-300 leading-relaxed"
               style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
             >
               Since September 2025, I've been independently experimenting with vibe coding through focused two-week sprints. Each project is built within a 14-day window, and I'll be sharing case studies soon.
@@ -444,9 +444,9 @@ export default function Home() {
           </div>
           
           {/* Right Column - Projects - Same structure as Selected Work above */}
-          <div className="w-[68%] flex flex-col px-6 md:px-12">
+          <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
             {/* Projects Grid - Aligned with image left edge (images are 85% width, centered, so left edge is at 7.5%) */}
-            <div className="w-[85%] grid grid-cols-2 gap-4 md:gap-6 items-stretch" style={{ marginLeft: '7.5%', marginRight: 'auto', borderRadius: '20px' }}>
+            <div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch md:mx-auto" style={{ borderRadius: '20px' }}>
               {vibeCodingProjects.map((project, index) => {
               const cardContent = (
                 <div className="bg-gray-900/30 border border-gray-800 rounded-[24px] overflow-hidden relative group cursor-pointer transition-all duration-300 hover:border-gray-700 hover:bg-gray-900/50 h-full flex flex-col">
@@ -558,17 +558,17 @@ export default function Home() {
 
       {/* Writing Section - Full Width */}
       <section id="writing" className="py-16 md:py-24 border-t border-gray-900">
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* Left Column - Aligned with Selected work titles and AI tools header */}
-          <div className="w-[32%] px-6 md:px-12">
+          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
-              className="text-3xl md:text-4xl font-light text-white mb-4"
-              style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: '48px', lineHeight: '100%', fontStyle: 'italic' }}
+              className="text-2xl md:text-4xl font-light text-white mb-4"
+              style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}
             >
               Writing
             </h2>
             <p 
-              className="text-sm md:text-base mb-12 md:mb-16"
+              className="text-sm md:text-base mb-8 md:mb-16"
               style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, fontSize: '18px', color: 'rgba(209, 213, 219, 1)' }}
             >
               Thoughts on design, building, and working with AI
@@ -576,9 +576,9 @@ export default function Home() {
           </div>
           
           {/* Right Column - Articles - Same structure as AI projects above */}
-          <div className="w-[68%] flex flex-col px-6 md:px-12">
+          <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
             {/* Articles Grid - Aligned with project cards left edge (same as projects: 85% width, 7.5% left margin) */}
-            <div className="w-[85%] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-8" style={{ marginLeft: '7.5%', marginRight: 'auto' }}>
+            <div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mx-auto">
               {articles.map((article, index) => {
                 const content = (
                   <div className="group cursor-pointer transition-opacity hover:opacity-80">

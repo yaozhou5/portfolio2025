@@ -4,7 +4,7 @@ import {
   motion,
   AnimatePresence
 } from 'motion/react';
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 
 export type DockItemData = {
   icon: React.ReactNode;
@@ -31,7 +31,8 @@ function DockItem({
   mouseX,
   distance,
   magnification,
-  baseItemSize
+  baseItemSize,
+  label
 }: {
   className?: string;
   children: React.ReactNode;
@@ -40,12 +41,13 @@ function DockItem({
   distance: number;
   magnification: number;
   baseItemSize: number;
+  label?: React.ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [scale, setScale] = useState(1);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!ref.current) return;
 
     const updateScale = () => {
@@ -86,16 +88,23 @@ function DockItem({
       style={{
         width: baseItemSize,
         height: baseItemSize,
+        minWidth: baseItemSize,
+        minHeight: baseItemSize,
         transform: `scale(${scale})`,
         transformOrigin: 'center',
         transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => {
+        setTimeout(() => setIsHovered(false), 200);
+      }}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md cursor-pointer ${className}`}
+      className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md cursor-pointer touch-manipulation ${className}`}
       role="button"
       tabIndex={0}
+      aria-label={typeof label === 'string' ? label : 'Dock item'}
     >
       {React.Children.map(children, child =>
         React.isValidElement(child)
@@ -115,7 +124,7 @@ function DockLabel({ children, className = '', isHovered }: { className?: string
           animate={{ opacity: 1, y: -10 }}
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
-          className={`${className} absolute -top-6 left-1/2 -translate-x-1/2 w-fit whitespace-pre rounded-md border border-neutral-700 bg-[#060010] px-2 py-0.5 text-xs text-white pointer-events-none`}
+          className={`${className} absolute -top-5 md:-top-6 left-1/2 -translate-x-1/2 w-fit whitespace-pre rounded-md border border-neutral-700 bg-[#060010] px-1.5 md:px-2 py-0.5 text-[10px] md:text-xs text-white pointer-events-none`}
           role="tooltip"
         >
           {children}
@@ -142,6 +151,22 @@ export default function Dock({
   const [mouseX, setMouseX] = useState(Infinity);
   const rafRef = useRef<number | null>(null);
   const lastMouseXRef = useRef<number>(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Adjust sizes for mobile
+  const responsiveBaseItemSize = isMobile ? 44 : baseItemSize;
+  const responsivePanelHeight = isMobile ? 56 : panelHeight;
+  const responsiveMagnification = isMobile ? 20 : magnification;
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     // Throttle updates
@@ -171,14 +196,14 @@ export default function Dock({
 
   return (
     <div 
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50"
+      className="fixed bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-50"
     >
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className={`${className} flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4 bg-[#060010]/80 backdrop-blur-md`}
-        style={{ height: panelHeight }}
+        className={`${className} flex items-end w-fit gap-2 md:gap-4 rounded-xl md:rounded-2xl border-neutral-700 border-2 pb-1.5 md:pb-2 px-2 md:px-4 bg-[#060010]/80 backdrop-blur-md`}
+        style={{ height: responsivePanelHeight }}
         role="toolbar"
         aria-label="Application dock"
       >
@@ -189,8 +214,9 @@ export default function Dock({
             className={item.className}
             mouseX={mouseX}
             distance={distance}
-            magnification={magnification}
-            baseItemSize={baseItemSize}
+            magnification={responsiveMagnification}
+            baseItemSize={responsiveBaseItemSize}
+            label={item.label}
           >
             <DockIcon>{item.icon}</DockIcon>
             <DockLabel>{item.label}</DockLabel>
