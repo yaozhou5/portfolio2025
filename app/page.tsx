@@ -231,12 +231,8 @@ export default function Home() {
         {/* Left Column - Hero Text and Project Titles (Sticky) */}
         <div className="w-full md:w-[32%] md:sticky md:top-0 md:h-screen flex flex-col px-6 md:px-12 pt-8 pb-8 md:pb-24 overflow-y-auto overflow-x-visible">
           <div className="w-full overflow-visible">
-            {/* Intro Text - Fades in/out based on hero visibility */}
-            <div
-              className={`transition-opacity duration-500 mb-12 ${
-                isHeroVisible ? "opacity-100" : "opacity-0"
-              }`}
-            >
+            {/* Intro Text - Always visible */}
+            <div className="mb-12">
               <p className="text-[15px] text-gray-500 mb-2 tracking-wider" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>Product Designer</p>
               <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Kumlien Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
                 Yao Zhou
@@ -378,7 +374,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white">
+                        <h3 className="text-2xl md:text-3xl font-light text-white text-center px-4">
                           {project.title}
                         </h3>
                       </div>
@@ -410,7 +406,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white">
+                        <h3 className="text-2xl md:text-3xl font-light text-white text-center px-4">
                           {project.title}
                         </h3>
                       </div>
