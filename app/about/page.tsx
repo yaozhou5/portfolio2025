@@ -103,7 +103,7 @@ export default function About() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-hidden">
+    <main className="min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Animated background gradient */}
       <div 
         className="fixed inset-0 opacity-20 pointer-events-none transition-opacity duration-1000"
@@ -115,7 +115,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-32 relative z-10">
         {/* Timeline Section - Simplified horizontal timeline */}
         <section 
-          className="mb-24 md:mb-32"
+          className="mb-24 md:mb-32 overflow-visible"
           ref={(el) => { sectionRefs.current['timeline'] = el; }}
         >
           <h2 
@@ -132,7 +132,7 @@ export default function About() {
           </h2>
           
           <div 
-            className="relative"
+            className="relative overflow-visible"
             style={{
               opacity: isVisible['timeline'] ? 1 : 0,
               transform: isVisible['timeline'] ? 'translateY(0)' : 'translateY(30px)',
@@ -140,7 +140,7 @@ export default function About() {
             }}
           >
             {/* Desktop: Horizontal timeline */}
-            <div className="hidden md:block relative">
+            <div className="hidden md:block relative overflow-visible">
               {/* Horizontal line */}
               <div className="absolute top-6 left-0 right-0 h-px bg-gray-800" />
               
@@ -181,9 +181,10 @@ export default function About() {
                     {/* Tooltip on hover */}
                     {hoveredIndex === index && (
                       <div 
-                        className="absolute top-12 left-1/2 transform -translate-x-1/2 z-20 px-4 py-2 rounded-lg bg-black/90 backdrop-blur-sm border border-gray-700 shadow-xl min-w-[180px] text-center"
+                        className="absolute top-12 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-black/90 backdrop-blur-sm border border-gray-700 shadow-xl min-w-[180px] text-center whitespace-normal"
                         style={{
-                          opacity: 0.9,
+                          opacity: 0.95,
+                          pointerEvents: 'auto',
                         }}
                       >
                         <div 
@@ -202,55 +203,36 @@ export default function About() {
               </div>
             </div>
 
-            {/* Mobile: Vertical collapsible timeline */}
-            <div className="md:hidden space-y-0">
-              {timelineEvents.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative pl-8 pb-8 border-l border-gray-800 last:border-l-0 last:pb-0"
-                >
-                  {/* Circle */}
-                  <div className="absolute -left-2.5 top-0">
-                    <div 
-                      className={`w-5 h-5 rounded-full bg-white transition-all duration-300 ${
-                        expandedIndex === index ? 'scale-125 shadow-lg shadow-white/20' : ''
-                      }`}
-                      style={{
-                        boxShadow: expandedIndex === index ? '0 0 12px rgba(255, 255, 255, 0.3)' : 'none',
-                      }}
-                    />
-                  </div>
-                  
-                  {/* Year and event */}
-                  <div 
-                    className="cursor-pointer"
-                    onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                  >
-                    <div 
-                      className={`text-base mb-2 transition-colors duration-300 ${
-                        expandedIndex === index ? 'text-white' : 'text-gray-400'
-                      }`}
-                      style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 500 }}
-                    >
-                      {item.year}
-                    </div>
+            {/* Mobile: Vertical Timeline */}
+            <div className="block md:hidden relative overflow-visible">
+              {/* Vertical line on left */}
+              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-700" />
+              
+              {/* Stacked milestones */}
+              <div className="space-y-12 pl-12">
+                {timelineEvents.map((item, index) => (
+                  <div key={index} className="relative">
+                    {/* Dot on line */}
+                    <div className="absolute -left-9 top-1 w-6 h-6 rounded-full bg-white border-4 border-black" />
                     
-                    {/* Expandable event description */}
-                    <div 
-                      className={`overflow-hidden transition-all duration-300 ${
-                        expandedIndex === index ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                    >
+                    {/* Content */}
+                    <div>
                       <div 
-                        className="text-sm text-gray-300 leading-relaxed pt-1"
+                        className="text-gray-400 text-xs uppercase tracking-wider mb-1"
                         style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                      >
+                        {item.year}
+                      </div>
+                      <div 
+                        className="text-white text-lg font-semibold"
+                        style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 600 }}
                       >
                         {item.event}
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
