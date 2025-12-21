@@ -39,6 +39,11 @@ export default function Home() {
 
   const articles = [
     {
+      title: "A Year After Quitting My First Startup, I Stopped Trying to Win",
+      date: "December 18, 2025",
+      link: "https://substack.com/home/post/p-182023523",
+    },
+    {
       title: "4 Reasons to Build (Only One Is Your Portfolio)",
       date: "December 11, 2025",
       link: "https://open.substack.com/pub/byshay/p/4-reasons-to-build-only-one-is-your?r=5bh8rr&utm_campaign=post&utm_medium=web",
@@ -52,11 +57,6 @@ export default function Home() {
       title: "The Control Paradox: Why Vibe Coding Feels So Different",
       date: "November 20, 2025",
       link: "https://byshay.substack.com/p/the-control-paradox-why-vibe-coding",
-    },
-    {
-      title: "We Should Build AI That Isn't Always Helpful",
-      date: "November 5, 2025",
-      link: "https://open.substack.com/pub/byshay/p/we-should-build-ai-that-isnt-always?utm_campaign=post-expanded-share&utm_medium=web",
     },
   ];
 
@@ -74,7 +74,7 @@ export default function Home() {
       description: "Decode Dutch street names so you'll never get lost again.",
       keyTech: "Lovable",
       date: "Oct 2025",
-      link: "#",
+      link: "https://straatology.nl/",
       image: "/straatology.png",
     },
     {
@@ -620,10 +620,24 @@ export default function Home() {
       {/* Footer */}
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-end">
-            {/* Right side - Built with Cursor */}
+          <div className="flex justify-between items-center">
+            {/* Left side - Location */}
             <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-              100% Built with Cursor
+              Based in Amsterdam, NL
+            </p>
+            {/* Right side - Built with Cursor */}
+            <p className="text-gray-400 text-sm whitespace-nowrap flex items-center" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400, gap: '0px' }}>
+              <span>100% Built with</span>
+              <img 
+                src="/Cursor-brand-logo-2.svg" 
+                alt="Cursor" 
+                className="inline-block w-40 h-40"
+                style={{ 
+                  backgroundColor: 'transparent',
+                  mixBlendMode: 'normal',
+                  marginLeft: '-8px'
+                }}
+              />
             </p>
           </div>
         </div>
