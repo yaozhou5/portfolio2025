@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Dock from "./components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
-import { FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaLocationDot } from "react-icons/fa";
 
 export default function Home() {
   const router = useRouter();
@@ -627,7 +627,7 @@ export default function Home() {
           {/* Left Column - Based in Amsterdam, matches Writing section layout */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <div className="flex items-center gap-2">
-              <FaMapMarkerAlt size={16} className="text-gray-400 flex-shrink-0" />
+              <FaLocationDot size={16} className="text-gray-400 flex-shrink-0" />
               <p className="text-gray-400 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                 Based in Amsterdam, NL
               </p>
