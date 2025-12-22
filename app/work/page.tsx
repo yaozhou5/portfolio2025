@@ -7,7 +7,7 @@ import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 
 const professionalProjects = [
   {
-    slug: "clearfeed",
+    slug: "vibelab",
     title: "Decentralized News Reading",
     elevatorPitch: "Re-architecting Media Payments with Web3",
     description: "Award-winning Web3 News Reading App concept",

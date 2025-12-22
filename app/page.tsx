@@ -27,7 +27,7 @@ export default function Home() {
       title: "Decentralized News Reading",
       description: "Award-winning Web3 News Reading App concept",
       image: "/Decentralized.png",
-      slug: "clearfeed",
+      slug: "vibelab",
     },
     {
       title: "Faster Co-Presenting, Less Friction",
@@ -38,11 +38,6 @@ export default function Home() {
   ];
 
   const articles = [
-    {
-      title: "A Year After Quitting My First Startup, I Stopped Trying to Win",
-      date: "December 18, 2025",
-      link: "https://substack.com/home/post/p-182023523",
-    },
     {
       title: "4 Reasons to Build (Only One Is Your Portfolio)",
       date: "December 11, 2025",
@@ -57,6 +52,11 @@ export default function Home() {
       title: "The Control Paradox: Why Vibe Coding Feels So Different",
       date: "November 20, 2025",
       link: "https://byshay.substack.com/p/the-control-paradox-why-vibe-coding",
+    },
+    {
+      title: "We Should Build AI That Isn't Always Helpful",
+      date: "November 5, 2025",
+      link: "https://open.substack.com/pub/byshay/p/we-should-build-ai-that-isnt-always?utm_campaign=post-expanded-share&utm_medium=web",
     },
   ];
 
@@ -74,7 +74,7 @@ export default function Home() {
       description: "Decode Dutch street names so you'll never get lost again.",
       keyTech: "Lovable",
       date: "Oct 2025",
-      link: "https://straatology.nl/",
+      link: "#",
       image: "/straatology.png",
     },
     {
@@ -231,8 +231,12 @@ export default function Home() {
         {/* Left Column - Hero Text and Project Titles (Sticky) */}
         <div className="w-full md:w-[32%] md:sticky md:top-0 md:h-screen flex flex-col px-6 md:px-12 pt-8 pb-8 md:pb-24 overflow-y-auto overflow-x-visible">
           <div className="w-full overflow-visible">
-            {/* Intro Text - Always visible */}
-            <div className="mb-12">
+            {/* Intro Text - Fades in/out based on hero visibility */}
+            <div
+              className={`transition-opacity duration-500 mb-12 ${
+                isHeroVisible ? "opacity-100" : "opacity-0"
+              }`}
+            >
               <p className="text-[15px] text-gray-500 mb-2 tracking-wider" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>Product Designer</p>
               <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Kumlien Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
                 Yao Zhou
@@ -374,7 +378,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white text-center px-4">
+                        <h3 className="text-2xl md:text-3xl font-light text-white">
                           {project.title}
                         </h3>
                       </div>
@@ -406,7 +410,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white text-center px-4">
+                        <h3 className="text-2xl md:text-3xl font-light text-white">
                           {project.title}
                         </h3>
                       </div>
@@ -619,26 +623,35 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center">
-            {/* Left side - Location */}
-            <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+        <div className="flex flex-col md:flex-row">
+          {/* Left Column - Based in Amsterdam, matches Writing section layout */}
+          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0 flex items-center">
+            <p className="text-gray-400 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
               Based in Amsterdam, NL
             </p>
-            {/* Right side - Built with Cursor */}
-            <p className="text-gray-400 text-sm whitespace-nowrap flex items-center" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400, gap: '0px' }}>
-              <span>100% Built with</span>
-              <img 
-                src="/Cursor-brand-logo-2.svg" 
-                alt="Cursor" 
-                className="inline-block w-40 h-40"
-                style={{ 
-                  backgroundColor: 'transparent',
-                  mixBlendMode: 'normal',
-                  marginLeft: '-8px'
-                }}
-              />
-            </p>
+          </div>
+          
+          {/* Right Column - Aligned with Writing section articles */}
+          <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
+            {/* Container matching Writing section article blocks width (85%) */}
+            <div className="w-full md:w-[85%] md:mx-auto flex justify-end items-center">
+              {/* Right side - Built with Cursor */}
+              <div className="flex items-center gap-2">
+                <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+                  100% Built with Cursor
+                </p>
+                <img 
+                  src="/Cursor-brand-logo-2.svg" 
+                  alt="Cursor" 
+                  className="w-40 h-40"
+                  style={{ 
+                    backgroundColor: 'transparent',
+                    mixBlendMode: 'normal',
+                    marginLeft: '-8px'
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </footer>
