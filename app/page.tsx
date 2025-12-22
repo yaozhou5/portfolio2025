@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Dock from "./components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
-import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Home() {
   const router = useRouter();
@@ -623,10 +623,11 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row md:items-center">
           {/* Left Column - Based in Amsterdam, matches Writing section layout */}
-          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0 flex items-center">
-            <p className="text-gray-400 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
+            <p className="text-gray-400 text-sm flex items-center gap-2" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+              <FaMapMarkerAlt size={14} />
               Based in Amsterdam, NL
             </p>
           </div>
@@ -636,9 +637,9 @@ export default function Home() {
             {/* Container matching Writing section article blocks width (85%) */}
             <div className="w-full md:w-[85%] md:mx-auto flex justify-end items-center">
               {/* Right side - Built with Cursor */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-0">
                 <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-                  100% Built with Cursor
+                  100% Built with
                 </p>
                 <img 
                   src="/Cursor-brand-logo-2.svg" 
@@ -647,7 +648,7 @@ export default function Home() {
                   style={{ 
                     backgroundColor: 'transparent',
                     mixBlendMode: 'normal',
-                    marginLeft: '-8px'
+                    marginLeft: '-20px'
                   }}
                 />
               </div>
