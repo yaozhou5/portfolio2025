@@ -625,9 +625,7 @@ export default function Home() {
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
         <div className="flex flex-col md:flex-row">
           {/* Left Column - Empty, matches Writing section layout */}
-          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
-            {/* Empty space to match Writing section alignment */}
-          </div>
+          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0"></div>
           
           {/* Right Column - Aligned with Writing section articles */}
           <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
