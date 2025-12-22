@@ -627,7 +627,7 @@ export default function Home() {
           {/* Left Column - Based in Amsterdam, matches Writing section layout */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <p className="text-gray-400 text-sm flex items-center gap-2" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-              <FaMapMarkerAlt size={14} />
+              <FaMapMarkerAlt size={16} className="text-gray-400" />
               Based in Amsterdam, NL
             </p>
           </div>
