@@ -626,10 +626,12 @@ export default function Home() {
         <div className="flex flex-col md:flex-row md:items-center">
           {/* Left Column - Based in Amsterdam, matches Writing section layout */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
-            <p className="text-gray-400 text-sm flex items-center gap-2" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-              <FaMapMarkerAlt size={16} className="text-gray-400" />
-              Based in Amsterdam, NL
-            </p>
+            <div className="flex items-center gap-2">
+              <FaMapMarkerAlt size={16} className="text-gray-400 flex-shrink-0" />
+              <p className="text-gray-400 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+                Based in Amsterdam, NL
+              </p>
+            </div>
           </div>
           
           {/* Right Column - Aligned with Writing section articles */}
