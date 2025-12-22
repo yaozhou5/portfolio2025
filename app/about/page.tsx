@@ -210,14 +210,14 @@ export default function About() {
               
               {/* Stacked milestones */}
               <div className="space-y-12 pl-12">
-                {timelineEvents.map((item, index) => (
+              {timelineEvents.map((item, index) => (
                   <div key={index} className="relative">
                     {/* Dot on line */}
                     <div className="absolute -left-9 top-1 w-6 h-6 rounded-full bg-white border-4 border-black" />
-                    
+                  
                     {/* Content */}
                     <div>
-                      <div 
+                    <div 
                         className="text-gray-400 text-xs uppercase tracking-wider mb-1"
                         style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                       >
@@ -232,9 +232,9 @@ export default function About() {
                     </div>
                   </div>
                 ))}
-              </div>
-            
-        
+                </div>
+            </div>
+          </div>
         </section>
 
         {/* Hero Section - Enhanced with animations */}
