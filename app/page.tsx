@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Dock from "./components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
-import { FaLinkedin, FaEnvelope, FaMapMarker } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Home() {
   const router = useRouter();
@@ -623,15 +623,10 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
-        <div className="flex flex-col md:flex-row md:items-center">
-          {/* Left Column - Based in Amsterdam, matches Writing section layout */}
+        <div className="flex flex-col md:flex-row">
+          {/* Left Column - Empty, matches Writing section layout */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
-            <div className="flex items-center gap-2">
-              <FaMapMarker size={16} className="text-gray-400 flex-shrink-0" />
-              <p className="text-gray-400 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-                Based in Amsterdam, NL
-              </p>
-            </div>
+            {/* Empty space to match Writing section alignment */}
           </div>
           
           {/* Right Column - Aligned with Writing section articles */}
