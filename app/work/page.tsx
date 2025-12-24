@@ -7,7 +7,7 @@ import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 
 const professionalProjects = [
   {
-    slug: "vibelab",
+    slug: "clearfeed",
     title: "Decentralized News Reading",
     elevatorPitch: "Re-architecting Media Payments with Web3",
     description: "Award-winning Web3 News Reading App concept",
@@ -219,7 +219,7 @@ export default function WorkPage() {
                   className="group block flex-1"
                 >
                   {cardContent}
-                </Link>
+              </Link>
               );
             })}
           </div>

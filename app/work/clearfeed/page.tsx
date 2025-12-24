@@ -121,6 +121,17 @@ export default function DecentralizedNewsReadingCaseStudy() {
           </p>
         </div>
 
+        {/* Key Features Overview */}
+        <div className="mb-16 md:mb-24">
+          <div className="w-full bg-black rounded-lg overflow-hidden flex items-center justify-center">
+            <img
+              src="/ClearFeed_06.png"
+              alt="ClearFeed app screens showing news article view, author profile, and payment summary"
+              className="max-w-full h-auto"
+            />
+          </div>
+        </div>
+
         {/* Overview Section */}
         <section className="mb-16 md:mb-24">
           {/* Awards Recognition */}
