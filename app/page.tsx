@@ -7,11 +7,18 @@ import Dock from "./components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+interface Article {
+  title: string;
+  date: string;
+  link: string;
+}
+
 export default function Home() {
   const router = useRouter();
   const [activeProjectIndex, setActiveProjectIndex] = useState<number | null>(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [articles, setArticles] = useState<Article[]>([]);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const activeProjectIndexRef = useRef<number | null>(0);
@@ -37,28 +44,27 @@ export default function Home() {
     },
   ];
 
-  const articles = [
-    {
-      title: "4 Reasons to Build (Only One Is Your Portfolio)",
-      date: "December 11, 2025",
-      link: "https://open.substack.com/pub/byshay/p/4-reasons-to-build-only-one-is-your?r=5bh8rr&utm_campaign=post&utm_medium=web",
-    },
-    {
-      title: "Do We Always Have to Pay for Our Knowledge Gap?",
-      date: "December 8, 2025",
-      link: "https://byshay.substack.com/p/do-we-always-have-to-pay-for-our",
-    },
-    {
-      title: "The Control Paradox: Why Vibe Coding Feels So Different",
-      date: "November 20, 2025",
-      link: "https://byshay.substack.com/p/the-control-paradox-why-vibe-coding",
-    },
-    {
-      title: "We Should Build AI That Isn't Always Helpful",
-      date: "November 5, 2025",
-      link: "https://open.substack.com/pub/byshay/p/we-should-build-ai-that-isnt-always?utm_campaign=post-expanded-share&utm_medium=web",
-    },
-  ];
+  // Fetch articles from Substack RSS feed
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch('/api/substack');
+        if (response.ok) {
+          const data = await response.json();
+          // Limit to 4 most recent articles
+          setArticles(data.slice(0, 4));
+        } else {
+          // Fallback to empty array if fetch fails
+          setArticles([]);
+        }
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+        setArticles([]);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   const vibeCodingProjects = [
     {
@@ -579,7 +585,10 @@ export default function Home() {
           <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
             {/* Articles Grid - Aligned with project cards left edge (same as projects: 85% width, 7.5% left margin) */}
             <div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mx-auto">
-              {articles.map((article, index) => {
+              {articles.length === 0 ? (
+                <div className="col-span-2 text-gray-500 text-sm">Loading articles...</div>
+              ) : (
+                articles.map((article, index) => {
                 const content = (
                   <div className="group cursor-pointer transition-opacity hover:opacity-80">
                     <h3 className="text-xl font-medium mb-2">{article.title}</h3>
@@ -606,7 +615,8 @@ export default function Home() {
                     {content}
                   </div>
                 );
-              })}
+              })
+              )}
             </div>
             <a
               href="https://byshay.substack.com"
