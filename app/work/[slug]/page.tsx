@@ -95,6 +95,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
 
   // Inject structured data script
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const imageMap: Record<string, string> = {
       afterhours: "https://www.shayworks.com/Afterhours_cover2.png",
       vibelab: "https://www.shayworks.com/Decentralized.png",

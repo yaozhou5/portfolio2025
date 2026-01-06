@@ -44,6 +44,8 @@ export default function AfterhoursCaseStudy() {
 
   // Inject structured data script
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.id = 'afterhours-structured-data';

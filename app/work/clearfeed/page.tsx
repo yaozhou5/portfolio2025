@@ -102,6 +102,8 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
   // Inject structured data script
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.id = 'clearfeed-structured-data';
