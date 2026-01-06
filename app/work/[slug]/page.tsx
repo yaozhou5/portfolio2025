@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const projects: Record<
   string,
@@ -122,12 +123,14 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
   const structuredData = getStructuredData();
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <script
+    <>
+      <Script
+        id={`${params.slug}-structured-data`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      {/* Top Navigation Bar */}
+      <main className="min-h-screen bg-black text-white">
+        {/* Top Navigation Bar */}
       <nav className="sticky top-0 z-50 border-b border-gray-900 bg-black">
         <div className="flex items-center justify-between px-6 md:px-12 py-4">
           <Link
@@ -355,6 +358,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+    </>
   );
 }

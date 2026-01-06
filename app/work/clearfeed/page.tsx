@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+import Script from "next/script";
 import Dock from "../../components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 
@@ -101,12 +102,14 @@ export default function DecentralizedNewsReadingCaseStudy() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <script
+    <>
+      <Script
+        id="clearfeed-structured-data"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <main className="min-h-screen bg-black text-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Hero Image */}
         <div className="mb-12 md:mb-16">
           <div className="w-full bg-black rounded-lg overflow-hidden flex items-center justify-center">
@@ -541,6 +544,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
         baseItemSize={50}
         magnification={40}
       />
-    </main>
+      </main>
+    </>
   );
 }
