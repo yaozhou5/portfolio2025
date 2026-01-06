@@ -4,14 +4,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Shay - Product Designer",
   description: "Product designer specializing in early-stage startups and AI-assisted development. 5+ years experience designing products that find product-market fit through user research and rapid prototyping.",
-  keywords: "product designer Amsterdam, early-stage product design, AI product designer, startup product designer, UX designer Netherlands, product design portfolio",
   authors: [{ name: "Shay Zhou" }],
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://www.shayworks.com/",
   },
   other: {
-    publisher: "Shay Zhou",
+    "keywords": "product designer Amsterdam, early-stage product design, AI product designer, startup product designer, UX designer Netherlands, product design portfolio",
+    "author": "Shay Zhou",
+    "publisher": "Shay Zhou",
   },
 };
 
