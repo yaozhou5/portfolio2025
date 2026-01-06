@@ -25,16 +25,16 @@ export default function Home() {
 
   const projects = [
     {
-      title: "From Swipes to Actual Dates",
-      description: "MVP redesign for a dating App targeting Gen Z",
-      image: "/Afterhours_cover2.png",
-      slug: "afterhours",
-    },
-    {
       title: "Decentralized News Reading",
       description: "Award-winning Web3 News Reading App concept",
       image: "/Decentralized.png",
       slug: "clearfeed",
+    },
+    {
+      title: "From Swipes to Actual Dates",
+      description: "MVP redesign for a dating App targeting Gen Z",
+      image: "/Afterhours_cover2.png",
+      slug: "afterhours",
     },
     {
       title: "Faster Co-Presenting, Less Friction",
@@ -273,7 +273,7 @@ export default function Home() {
             </div>
 
             {/* Project Titles List - Scroll-linked activation */}
-            <div className="space-y-6">
+            <div className="space-y-6 mt-16 md:mt-24">
               {projects.map((project, index) => (
                 <div key={index} className="min-w-0">
                   {project.slug === "project-three" ? (
