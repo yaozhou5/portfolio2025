@@ -93,8 +93,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
     return null;
   }
 
-  // Structured data for SEO - dynamically generated based on project
-  const getStructuredData = () => {
+  // Inject structured data script
+  useEffect(() => {
     const imageMap: Record<string, string> = {
       afterhours: "https://www.shayworks.com/Afterhours_cover2.png",
       vibelab: "https://www.shayworks.com/Decentralized.png",
@@ -105,7 +105,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       vibelab: "2024-01-01", // Based on "Ongoing 2024"
     };
 
-    return {
+    const structuredData = {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
       "name": project.headline || project.title,
@@ -117,15 +117,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       "datePublished": dateMap[params.slug] || "2024-01-01",
       "image": imageMap[params.slug] || "https://www.shayworks.com/og-image.png"
     };
-  };
 
-  // Inject structured data script
-  useEffect(() => {
-    if (params.slug === "project-three") {
-      return; // Don't add structured data for redirecting project
-    }
-
-    const structuredData = getStructuredData();
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.id = `${params.slug}-structured-data`;
@@ -138,7 +130,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
         document.head.removeChild(existingScript);
       }
     };
-  }, [params.slug]);
+  }, [params.slug, project]);
 
   return (
     <main className="min-h-screen bg-black text-white">
