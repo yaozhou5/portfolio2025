@@ -12,10 +12,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.shayworks.com/",
   },
-  other: {
-    "keywords": "product designer Amsterdam, early-stage product design, AI product designer, startup product designer, UX designer Netherlands, product design portfolio",
-    "publisher": "Shay Zhou",
-  },
 };
 
 export default function RootLayout({

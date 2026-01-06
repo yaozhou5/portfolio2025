@@ -119,10 +119,13 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
     };
   };
 
-  const structuredData = getStructuredData();
-
   // Inject structured data script
   useEffect(() => {
+    if (params.slug === "project-three") {
+      return; // Don't add structured data for redirecting project
+    }
+
+    const structuredData = getStructuredData();
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.id = `${params.slug}-structured-data`;
@@ -135,7 +138,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
         document.head.removeChild(existingScript);
       }
     };
-  }, [params.slug, structuredData]);
+  }, [params.slug]);
 
   return (
     <main className="min-h-screen bg-black text-white">

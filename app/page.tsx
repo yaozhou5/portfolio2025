@@ -7,34 +7,27 @@ import Dock from "./components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-interface Article {
-  title: string;
-  date: string;
-  link: string;
-}
-
 export default function Home() {
   const router = useRouter();
   const [activeProjectIndex, setActiveProjectIndex] = useState<number | null>(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [articles, setArticles] = useState<Article[]>([]);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const activeProjectIndexRef = useRef<number | null>(0);
 
   const projects = [
     {
-      title: "Decentralized News Reading",
-      description: "Award-winning Web3 News Reading App concept",
-      image: "/Decentralized.png",
-      slug: "clearfeed",
-    },
-    {
       title: "From Swipes to Actual Dates",
       description: "MVP redesign for a dating App targeting Gen Z",
       image: "/Afterhours_cover2.png",
       slug: "afterhours",
+    },
+    {
+      title: "Decentralized News Reading",
+      description: "Award-winning Web3 News Reading App concept",
+      image: "/Decentralized.png",
+      slug: "vibelab",
     },
     {
       title: "Faster Co-Presenting, Less Friction",
@@ -44,27 +37,28 @@ export default function Home() {
     },
   ];
 
-  // Fetch articles from Substack RSS feed
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch('/api/substack');
-        if (response.ok) {
-          const data = await response.json();
-          // Limit to 4 most recent articles
-          setArticles(data.slice(0, 4));
-        } else {
-          // Fallback to empty array if fetch fails
-          setArticles([]);
-        }
-      } catch (error) {
-        console.error('Error fetching articles:', error);
-        setArticles([]);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  const articles = [
+    {
+      title: "4 Reasons to Build (Only One Is Your Portfolio)",
+      date: "December 11, 2025",
+      link: "https://open.substack.com/pub/byshay/p/4-reasons-to-build-only-one-is-your?r=5bh8rr&utm_campaign=post&utm_medium=web",
+    },
+    {
+      title: "Do We Always Have to Pay for Our Knowledge Gap?",
+      date: "December 8, 2025",
+      link: "https://byshay.substack.com/p/do-we-always-have-to-pay-for-our",
+    },
+    {
+      title: "The Control Paradox: Why Vibe Coding Feels So Different",
+      date: "November 20, 2025",
+      link: "https://byshay.substack.com/p/the-control-paradox-why-vibe-coding",
+    },
+    {
+      title: "We Should Build AI That Isn't Always Helpful",
+      date: "November 5, 2025",
+      link: "https://open.substack.com/pub/byshay/p/we-should-build-ai-that-isnt-always?utm_campaign=post-expanded-share&utm_medium=web",
+    },
+  ];
 
   const vibeCodingProjects = [
     {
@@ -273,7 +267,7 @@ export default function Home() {
             </div>
 
             {/* Project Titles List - Scroll-linked activation */}
-            <div className="space-y-6 mt-16 md:mt-24">
+            <div className="space-y-6">
               {projects.map((project, index) => (
                 <div key={index} className="min-w-0">
                   {project.slug === "project-three" ? (
@@ -585,10 +579,7 @@ export default function Home() {
           <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
             {/* Articles Grid - Aligned with project cards left edge (same as projects: 85% width, 7.5% left margin) */}
             <div className="w-full md:w-[85%] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mx-auto">
-              {articles.length === 0 ? (
-                <div className="col-span-2 text-gray-500 text-sm">Loading articles...</div>
-              ) : (
-                articles.map((article, index) => {
+              {articles.map((article, index) => {
                 const content = (
                   <div className="group cursor-pointer transition-opacity hover:opacity-80">
                     <h3 className="text-xl font-medium mb-2">{article.title}</h3>
@@ -615,8 +606,7 @@ export default function Home() {
                     {content}
                   </div>
                 );
-              })
-              )}
+              })}
             </div>
             <a
               href="https://byshay.substack.com"
@@ -633,31 +623,12 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
-        <div className="flex flex-col md:flex-row">
-          {/* Left Column - Empty, matches Writing section layout */}
-          <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0"></div>
-          
-          {/* Right Column - Aligned with Writing section articles */}
-          <div className="w-full md:w-[68%] flex flex-col px-6 md:px-12">
-            {/* Container matching Writing section article blocks width (85%) */}
-            <div className="w-full md:w-[85%] md:mx-auto flex justify-end items-center">
-              {/* Right side - Built with Cursor */}
-              <div className="flex items-center gap-0">
-                <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
-                  100% Built with
-                </p>
-                <img 
-                  src="/Cursor-brand-logo-2.svg" 
-                  alt="Cursor" 
-                  className="w-40 h-40"
-                  style={{ 
-                    backgroundColor: 'transparent',
-                    mixBlendMode: 'normal',
-                    marginLeft: '-20px'
-                  }}
-                />
-              </div>
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-end">
+            {/* Right side - Built with Cursor */}
+            <p className="text-gray-400 text-sm whitespace-nowrap" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
+              100% Built with Cursor
+            </p>
           </div>
         </div>
       </footer>
