@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   },
   other: {
     "keywords": "product designer Amsterdam, early-stage product design, AI product designer, startup product designer, UX designer Netherlands, product design portfolio",
-    "author": "Shay Zhou",
     "publisher": "Shay Zhou",
   },
 };
