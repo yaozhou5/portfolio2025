@@ -93,8 +93,40 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
     return null;
   }
 
+  // Structured data for SEO - dynamically generated based on project
+  const getStructuredData = () => {
+    const imageMap: Record<string, string> = {
+      afterhours: "https://www.shayworks.com/Afterhours_cover2.png",
+      vibelab: "https://www.shayworks.com/Decentralized.png",
+    };
+
+    const dateMap: Record<string, string> = {
+      afterhours: "2024-01-01", // Based on "6 month contract 2024"
+      vibelab: "2024-01-01", // Based on "Ongoing 2024"
+    };
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": project.headline || project.title,
+      "description": project.description,
+      "author": {
+        "@type": "Person",
+        "name": "Shay Zhou"
+      },
+      "datePublished": dateMap[params.slug] || "2024-01-01",
+      "image": imageMap[params.slug] || "https://www.shayworks.com/og-image.png"
+    };
+  };
+
+  const structuredData = getStructuredData();
+
   return (
     <main className="min-h-screen bg-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* Top Navigation Bar */}
       <nav className="sticky top-0 z-50 border-b border-gray-900 bg-black">
         <div className="flex items-center justify-between px-6 md:px-12 py-4">

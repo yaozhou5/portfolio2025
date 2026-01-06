@@ -113,6 +113,18 @@ export default function About() {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-32 relative z-10">
+        {/* Page Title */}
+        <h1 
+          className="text-4xl md:text-5xl lg:text-6xl mb-16 md:mb-20 text-white"
+          style={{ 
+            fontFamily: "'Kumlien Pro', serif", 
+            fontWeight: 400,
+            fontStyle: 'italic',
+          }}
+        >
+          About
+        </h1>
+
         {/* Timeline Section - Simplified horizontal timeline */}
         <section 
           className="mb-24 md:mb-32 overflow-visible"
@@ -210,14 +222,14 @@ export default function About() {
               
               {/* Stacked milestones */}
               <div className="space-y-12 pl-12">
-              {timelineEvents.map((item, index) => (
+                {timelineEvents.map((item, index) => (
                   <div key={index} className="relative">
                     {/* Dot on line */}
                     <div className="absolute -left-9 top-1 w-6 h-6 rounded-full bg-white border-4 border-black" />
-                  
+                    
                     {/* Content */}
                     <div>
-                    <div 
+                      <div 
                         className="text-gray-400 text-xs uppercase tracking-wider mb-1"
                         style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                       >
@@ -232,9 +244,9 @@ export default function About() {
                     </div>
                   </div>
                 ))}
-                </div>
-            </div>
-          </div>
+              </div>
+            
+        
         </section>
 
         {/* Hero Section - Enhanced with animations */}

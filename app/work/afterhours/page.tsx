@@ -27,8 +27,26 @@ export default function AfterhoursCaseStudy() {
     { icon: <VscAccount size={18} />, label: 'About', onClick: handleAboutClick },
   ];
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "From Swipes to Actual Dates",
+    "description": "MVP redesign for a dating App targeting Gen Z",
+    "author": {
+      "@type": "Person",
+      "name": "Shay Zhou"
+    },
+    "datePublished": "2025-08-01",
+    "image": "https://www.shayworks.com/Afterhours_cover2.png"
+  };
+
   return (
     <main className="min-h-screen bg-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Hero Image */}
         <div className="mb-12 md:mb-16">

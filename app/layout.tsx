@@ -3,28 +3,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Shay - Product Designer",
-  description: "Portfolio of Shay, Product Designer",
-  openGraph: {
-    title: "Shay - Product Designer",
-    description: "I help early-stage products find their form, their flow, and their first users.",
-    url: "https://www.shayworks.com",
-    siteName: "Shay Works",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Shay - Product Designer Portfolio",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
+  description: "Product designer specializing in early-stage startups and AI-assisted development. 5+ years experience designing products that find product-market fit through user research and rapid prototyping.",
+  keywords: "product designer Amsterdam, early-stage product design, AI product designer, startup product designer, UX designer Netherlands, product design portfolio",
+  authors: [{ name: "Shay Zhou" }],
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.shayworks.com/",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shay - Product Designer",
-    description: "I help early-stage products find their form, their flow, and their first users.",
-    images: ["/og-image.png"],
+  other: {
+    publisher: "Shay Zhou",
   },
 };
 

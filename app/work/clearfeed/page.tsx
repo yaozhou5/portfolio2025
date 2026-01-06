@@ -86,8 +86,26 @@ export default function DecentralizedNewsReadingCaseStudy() {
     { icon: <VscAccount size={18} />, label: 'About', onClick: handleAboutClick },
   ];
 
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "ClearFeed: Decrypting the Paywall — A Decentralized Vision for News Reading",
+    "description": "Award-winning Web3 News Reading App concept",
+    "author": {
+      "@type": "Person",
+      "name": "Shay Zhou"
+    },
+    "datePublished": "2025-02-01",
+    "image": "https://www.shayworks.com/Decentralized.png"
+  };
+
   return (
     <main className="min-h-screen bg-black text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Hero Image */}
         <div className="mb-12 md:mb-16">
@@ -119,17 +137,6 @@ export default function DecentralizedNewsReadingCaseStudy() {
           <p className="text-base md:text-lg text-gray-400 mt-4" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
             <span className="text-gray-500 font-semibold">The Core Idea:</span> A Web3 news app concept that replaces rigid subscriptions with pay-per-article micropayments and community-driven content curation.
           </p>
-        </div>
-
-        {/* Key Features Overview */}
-        <div className="mb-16 md:mb-24">
-          <div className="w-full bg-black rounded-lg overflow-hidden flex items-center justify-center">
-            <img
-              src="/ClearFeed_06.png"
-              alt="ClearFeed app screens showing news article view, author profile, and payment summary"
-              className="max-w-full h-auto"
-            />
-          </div>
         </div>
 
         {/* Overview Section */}
