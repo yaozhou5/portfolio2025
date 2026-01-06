@@ -103,8 +103,7 @@ export default function About() {
   };
 
   return (
-    <>
-      <main className="min-h-screen bg-black text-white relative overflow-x-hidden">
+    <main className="min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Animated background gradient */}
       <div 
         className="fixed inset-0 opacity-20 pointer-events-none transition-opacity duration-1000"
@@ -467,7 +466,6 @@ export default function About() {
         baseItemSize={50}
         magnification={40}
       />
-      </main>
-    </>
+    </main>
   );
 }
