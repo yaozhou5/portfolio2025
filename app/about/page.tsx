@@ -467,6 +467,7 @@ export default function About() {
         baseItemSize={50}
         magnification={40}
       />
-    </main>
+      </main>
+    </>
   );
 }
