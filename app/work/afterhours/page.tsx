@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Script from "next/script";
+import { useEffect } from "react";
 import Dock from "../../components/Dock";
 import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 
@@ -42,14 +42,24 @@ export default function AfterhoursCaseStudy() {
     "image": "https://www.shayworks.com/Afterhours_cover2.png"
   };
 
+  // Inject structured data script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'afterhours-structured-data';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('afterhours-structured-data');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
-    <>
-      <Script
-        id="afterhours-structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white">
         <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Hero Image */}
         <div className="mb-12 md:mb-16">
@@ -118,8 +128,7 @@ export default function AfterhoursCaseStudy() {
         baseItemSize={50}
         magnification={40}
       />
-      </main>
-    </>
+    </main>
   );
 }
 

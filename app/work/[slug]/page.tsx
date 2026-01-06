@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Script from "next/script";
 
 const projects: Record<
   string,
@@ -122,14 +121,24 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
 
   const structuredData = getStructuredData();
 
+  // Inject structured data script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = `${params.slug}-structured-data`;
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById(`${params.slug}-structured-data`);
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, [params.slug, structuredData]);
+
   return (
-    <>
-      <Script
-        id={`${params.slug}-structured-data`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white">
         {/* Top Navigation Bar */}
       <nav className="sticky top-0 z-50 border-b border-gray-900 bg-black">
         <div className="flex items-center justify-between px-6 md:px-12 py-4">
@@ -358,7 +367,6 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </footer>
-      </main>
-    </>
+    </main>
   );
 }
