@@ -281,7 +281,7 @@ export default function Home() {
                         window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
                       }}
                     >
-                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
+                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 italic ${
                         activeProjectIndex === index 
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
@@ -306,7 +306,7 @@ export default function Home() {
                         }
                       }}
                     >
-                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 not-italic ${
+                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 italic ${
                         activeProjectIndex === index 
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
@@ -378,7 +378,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white">
+                        <h3 className="text-2xl md:text-3xl font-light text-white italic" style={{ fontFamily: "'Crimson Pro'" }}>
                           {project.title}
                         </h3>
                       </div>
@@ -410,7 +410,7 @@ export default function Home() {
                       </div>
                       {/* Hover Overlay with Project Title */}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white">
+                        <h3 className="text-2xl md:text-3xl font-light text-white italic" style={{ fontFamily: "'Crimson Pro'" }}>
                           {project.title}
                         </h3>
                       </div>

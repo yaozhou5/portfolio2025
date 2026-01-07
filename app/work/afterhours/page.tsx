@@ -75,7 +75,7 @@ export default function AfterhoursCaseStudy() {
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight not-italic" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400 }}>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight italic" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400 }}>
           From Swipes to Actual Dates
         </h1>
 

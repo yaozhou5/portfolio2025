@@ -107,7 +107,7 @@ export default function WorkPage() {
 
                         {/* Title */}
                         <h2 
-                          className="text-3xl md:text-4xl lg:text-5xl mb-4 font-medium text-white group-hover:text-gray-300 transition-colors duration-300"
+                          className="text-3xl md:text-4xl lg:text-5xl mb-4 font-medium text-white group-hover:text-gray-300 transition-colors duration-300 italic"
                           style={{ fontFamily: "'Crimson Pro'" }}
                         >
                           {featuredProject.title}
@@ -167,8 +167,8 @@ export default function WorkPage() {
 
                     {/* Title */}
                     <h2 
-                      className="text-2xl md:text-3xl mb-3 font-medium text-white group-hover:text-gray-300 transition-colors duration-300"
-                      style={{ fontFamily: "'Kumlien Pro'" }}
+                      className="text-2xl md:text-3xl mb-3 font-medium text-white group-hover:text-gray-300 transition-colors duration-300 italic"
+                      style={{ fontFamily: "'Crimson Pro'" }}
                     >
                       {project.title}
                     </h2>

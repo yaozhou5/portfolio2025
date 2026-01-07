@@ -133,7 +133,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl md:text-5xl lg:text-6xl mb-4 tracking-tight not-italic" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, lineHeight: '100%', fontSize: 'clamp(24px, 5vw, 60px)' }}>
+        <h1 className="text-2xl md:text-5xl lg:text-6xl mb-4 tracking-tight italic" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, lineHeight: '100%', fontSize: 'clamp(24px, 5vw, 60px)' }}>
           ClearFeed: Decrypting the Paywall — A Decentralized Vision for News Reading
         </h1>
 
