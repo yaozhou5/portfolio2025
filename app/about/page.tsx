@@ -130,7 +130,7 @@ export default function About() {
           className="mb-24 md:mb-32 overflow-visible"
           ref={(el) => { sectionRefs.current['timeline'] = el; }}
         >
-          <h2 
+          <h3 
             className="text-3xl md:text-4xl mb-16 text-white"
             style={{ 
               fontFamily: "'Post Grotesk', sans-serif", 
@@ -141,7 +141,7 @@ export default function About() {
             }}
           >
             Journey
-          </h2>
+          </h3>
           
           <div 
             className="relative overflow-visible"
