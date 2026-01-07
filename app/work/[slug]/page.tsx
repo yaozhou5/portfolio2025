@@ -124,7 +124,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen bg-black text-white">
         {/* Top Navigation Bar */}
-      <nav className="sticky top-0 z-50 border-b border-gray-900 bg-black">
+      <nav className="sticky top-0 z-50 bg-black">
         <div className="flex items-center justify-between px-6 md:px-12 py-4">
           <Link
             href="/"
@@ -207,7 +207,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Overview Section */}
-      <section className="px-6 md:px-12 py-12 md:py-16 border-t border-gray-900">
+      <section className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-light mb-8">Overview</h2>
 
@@ -258,7 +258,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Content Section */}
-      <section className="px-6 md:px-12 py-12 md:py-16 border-t border-gray-900">
+      <section className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-light mb-8 italic" style={{ fontFamily: "'Crimson Pro'" }}>
             {project.title}
@@ -287,7 +287,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Featured Work Section */}
-      <section className="px-6 md:px-12 py-16 md:py-24 border-t border-gray-900">
+      <section className="px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-light mb-12 text-gray-300">
             Featured work
@@ -320,7 +320,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
+      <footer className="px-6 py-16 md:py-24 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <p className="text-gray-400 text-sm">100% Built with Cursor</p>

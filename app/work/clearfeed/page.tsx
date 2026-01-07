@@ -531,7 +531,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
         </section>
 
         {/* Footer Tagline */}
-        <div className="mb-12 md:mb-16 pt-8 border-t border-gray-900">
+        <div className="mb-12 md:mb-16 pt-8">
           <p className="text-lg md:text-xl text-gray-400 italic" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 300 }}>
             Independent journalism. On your terms.
           </p>

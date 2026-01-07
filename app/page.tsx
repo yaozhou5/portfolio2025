@@ -357,7 +357,7 @@ export default function Home() {
       </div>
 
       {/* I build things with AI tools Section */}
-      <section className="py-16 md:py-24 border-t border-gray-900">
+      <section className="py-16 md:py-24">
         <div className="flex flex-col md:flex-row">
           {/* Left Column - Aligned with Selected work titles */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
@@ -555,7 +555,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 py-16 md:py-24 lg:px-12 border-t border-gray-900">
+      <footer className="px-6 py-16 md:py-24 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-end">
             {/* Right side - Built with Cursor */}
