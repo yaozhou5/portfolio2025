@@ -80,8 +80,7 @@
   font-display: swap;
 }
 
-/* Crimson Pro - for headings */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+/* Crimson Pro - loaded via Google Fonts import at top of file */
 
 body {
   color: var(--foreground);
