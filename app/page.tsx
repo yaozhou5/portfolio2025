@@ -237,7 +237,6 @@ export default function Home() {
                 isHeroVisible ? "opacity-100" : "opacity-0"
               }`}
             >
-              <p className="text-[15px] text-gray-500 mb-2 tracking-wider" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>Product Designer</p>
               <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Crimson Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
                 Yao Zhou
               </h1>
