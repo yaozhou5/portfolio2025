@@ -273,7 +273,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       {/* Content Section */}
       <section className="px-6 md:px-12 py-12 md:py-16 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-8">
+          <h2 className="text-3xl md:text-4xl font-light mb-8 italic" style={{ fontFamily: "'Crimson Pro'" }}>
             {project.title}
           </h2>
 
