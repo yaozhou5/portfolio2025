@@ -242,7 +242,7 @@ export default function Home() {
                 Yao Zhou
               </h1>
               <p className="text-lg md:text-[20px] text-gray-300 mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400 }}>
-                I help early-stage products find their form, their flow, and their first users.
+                Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
               
               {/* Social Icons */}
