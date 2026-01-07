@@ -56,7 +56,7 @@ function FeatureCard({ videoSrc, title, description }: { videoSrc: string; title
         <h3 className="text-xl md:text-2xl mb-3 text-white font-semibold" style={{ fontFamily: "'Post Grotesk', sans-serif" }}>
           {title}
         </h3>
-        <p className="text-base md:text-lg mb-4 text-gray-200" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, lineHeight: '100%' }}>
+        <p className="text-base md:text-lg mb-4 text-gray-200" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, lineHeight: '100%' }}>
           {description}
         </p>
       </div>
@@ -133,7 +133,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl md:text-5xl lg:text-6xl mb-4 tracking-tight not-italic" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, lineHeight: '100%', fontSize: 'clamp(24px, 5vw, 60px)' }}>
+        <h1 className="text-2xl md:text-5xl lg:text-6xl mb-4 tracking-tight not-italic" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, lineHeight: '100%', fontSize: 'clamp(24px, 5vw, 60px)' }}>
           ClearFeed: Decrypting the Paywall — A Decentralized Vision for News Reading
         </h1>
 
@@ -156,7 +156,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
         {/* Overview Section */}
         <section className="mb-16 md:mb-24">
           {/* Awards Recognition */}
-          <h2 className="text-2xl md:text-4xl mb-6" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-6" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             Awards Recognition
           </h2>
           {/* Certificates */}
@@ -177,7 +177,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
               className="h-auto max-w-full flex-1 min-w-0"
             />
           </div>
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             The Uncomfortable Truth: Subscription Fatigue & The Search for Trust
           </h2>
           <div className="space-y-8">
@@ -198,7 +198,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
         {/* Discovery Section */}
         <section className="mb-16 md:mb-24">
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             Discovery: The Cracks in the Current Model
           </h2>
           <div className="space-y-8">
@@ -256,7 +256,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
         {/* Process Section */}
         <section className="mb-16 md:mb-24">
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             Designing the Breakthrough: Making Decentralization Feel Familiar
           </h2>
           <div className="space-y-8">
@@ -351,7 +351,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
         {/* Rapid Design System with AI Section */}
         <section className="mb-16 md:mb-24">
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             Rapid Design System with AI
           </h2>
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
@@ -449,7 +449,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
         {/* Final Design Section */}
         <section className="mb-16 md:mb-24">
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             The Final Design: ClearFeed's Four Pillars
           </h2>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-12" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
@@ -489,7 +489,7 @@ export default function DecentralizedNewsReadingCaseStudy() {
 
         {/* Next Chapter Section */}
         <section className="mb-16 md:mb-24">
-          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
+          <h2 className="text-2xl md:text-4xl mb-8" style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}>
             What's Next
           </h2>
           <div className="space-y-8">

@@ -117,7 +117,7 @@ export default function About() {
         <h1 
           className="text-4xl md:text-5xl lg:text-6xl mb-16 md:mb-20 text-white"
           style={{ 
-            fontFamily: "'Kumlien Pro', serif", 
+            fontFamily: "'Crimson Pro', serif", 
             fontWeight: 400,
             fontStyle: 'italic',
           }}

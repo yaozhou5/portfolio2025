@@ -238,7 +238,7 @@ export default function Home() {
               }`}
             >
               <p className="text-[15px] text-gray-500 mb-2 tracking-wider" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>Product Designer</p>
-              <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Kumlien Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
+              <h1 className="text-[40px] md:text-[56px] mb-4 tracking-tight leading-tight italic text-white" style={{ fontFamily: "'Crimson Pro', serif", fontWeight: 400, fontSize: 'clamp(40px, 8vw, 65px)' }}>
                 Yao Zhou
               </h1>
               <p className="text-lg md:text-[20px] text-gray-300 mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400 }}>
@@ -286,7 +286,7 @@ export default function Home() {
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
                       }`} style={{ 
-                        fontFamily: "'Kumlien Pro'", 
+                        fontFamily: "'Crimson Pro'", 
                         fontWeight: 400, 
                         fontSize: 'clamp(22px, 4vw, 30px)',
                         fontStyle: 'italic'
@@ -311,7 +311,7 @@ export default function Home() {
                           ? "underline decoration-gray-400 underline-offset-4 text-white" 
                           : "text-gray-500 hover:text-gray-300"
                       }`} style={{ 
-                        fontFamily: "'Kumlien Pro'", 
+                        fontFamily: "'Crimson Pro'", 
                         fontWeight: 400, 
                         fontSize: 'clamp(22px, 4vw, 30px)',
                         fontStyle: 'italic'
@@ -430,7 +430,7 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
               className="text-2xl md:text-4xl mb-6 font-light text-white"
-              style={{ fontFamily: "'Kumlien Pro'", fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%' }}
+              style={{ fontFamily: "'Crimson Pro'", fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%' }}
             >
               I build things with AI tools.
             </h2>
@@ -563,7 +563,7 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
               className="text-2xl md:text-4xl font-light text-white mb-4"
-              style={{ fontFamily: "'Kumlien Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}
+              style={{ fontFamily: "'Crimson Pro'", fontWeight: 400, fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}
             >
               Writing
             </h2>

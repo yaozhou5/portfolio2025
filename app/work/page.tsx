@@ -69,7 +69,7 @@ export default function WorkPage() {
       <div className="px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl mb-16 md:mb-20 font-light tracking-tight" style={{ fontFamily: "'Kumlien Pro'" }}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl mb-16 md:mb-20 font-light tracking-tight" style={{ fontFamily: "'Crimson Pro'" }}>
             Design Case Studies
           </h1>
 
@@ -108,7 +108,7 @@ export default function WorkPage() {
                         {/* Title */}
                         <h2 
                           className="text-3xl md:text-4xl lg:text-5xl mb-4 font-medium text-white group-hover:text-gray-300 transition-colors duration-300"
-                          style={{ fontFamily: "'Kumlien Pro'" }}
+                          style={{ fontFamily: "'Crimson Pro'" }}
                         >
                           {featuredProject.title}
                         </h2>

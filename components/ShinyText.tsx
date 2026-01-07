@@ -14,7 +14,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 5
     <div
       className={`inline-block ${className}`}
       style={{
-        fontFamily: '"Kumlien Pro"',
+        fontFamily: '"Crimson Pro"',
         background: 'linear-gradient(120deg, rgba(181, 181, 181, 0.64) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(181, 181, 181, 0.64) 60%)',
         backgroundSize: '200% 100%',
         WebkitBackgroundClip: 'text',
