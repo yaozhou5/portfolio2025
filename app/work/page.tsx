@@ -194,24 +194,6 @@ export default function WorkPage() {
                 </div>
               );
 
-              if (project.slug === "project-three") {
-                return (
-                  <a
-                    key={project.slug}
-                    href="https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block flex-1"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
-                    }}
-                  >
-                    {cardContent}
-                  </a>
-                );
-              }
-
               return (
                 <Link
                   key={project.slug}

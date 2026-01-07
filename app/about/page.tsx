@@ -293,7 +293,7 @@ export default function About() {
               <h3 
                 className="text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-4 italic"
                 style={{ 
-                  fontFamily: "'Crimson Pro', serif", 
+                  fontFamily: "'Crimson Pro'", 
                   fontWeight: 400,
                 }}
               >

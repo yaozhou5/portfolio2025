@@ -73,24 +73,11 @@ const projects: Record<
 
 export default function WorkPage({ params }: { params: { slug: string } }) {
   const router = useRouter();
-  
-  // Redirect project-three to Pitch.com
-  useEffect(() => {
-    if (params.slug === "project-three") {
-      window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
-      router.push("/work");
-    }
-  }, [params.slug, router]);
 
   const project = projects[params.slug];
 
   if (!project) {
     notFound();
-  }
-  
-  // Don't render anything for project-three since we're redirecting
-  if (params.slug === "project-three") {
-    return null;
   }
 
   // Inject structured data script

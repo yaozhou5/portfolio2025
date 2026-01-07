@@ -270,56 +270,30 @@ export default function Home() {
             <div className="space-y-6">
               {projects.map((project, index) => (
                 <div key={index} className="min-w-0">
-                  {project.slug === "project-three" ? (
-                    <a
-                      href="https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block transition-all duration-300"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
-                      }}
-                    >
-                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 italic ${
-                        activeProjectIndex === index 
-                          ? "underline decoration-gray-400 underline-offset-4 text-white" 
-                          : "text-gray-500 hover:text-gray-300"
-                      }`} style={{ 
-                        fontFamily: "'Crimson Pro'", 
-                        fontWeight: 400, 
-                        fontSize: 'clamp(22px, 4vw, 30px)',
-                        fontStyle: 'italic'
-                      }}>
-                        {project.title}
-                      </h2>
-                    </a>
-                  ) : (
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="block transition-all duration-300"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const projectElement = document.getElementById(`project-${project.slug}`);
-                        if (projectElement) {
-                          projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                      }}
-                    >
-                      <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 italic ${
-                        activeProjectIndex === index 
-                          ? "underline decoration-gray-400 underline-offset-4 text-white" 
-                          : "text-gray-500 hover:text-gray-300"
-                      }`} style={{ 
-                        fontFamily: "'Crimson Pro'", 
-                        fontWeight: 400, 
-                        fontSize: 'clamp(22px, 4vw, 30px)',
-                        fontStyle: 'italic'
-                      }}>
-                        {project.title}
-                      </h2>
-                    </Link>
-                  )}
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="block transition-all duration-300"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const projectElement = document.getElementById(`project-${project.slug}`);
+                      if (projectElement) {
+                        projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }}
+                  >
+                    <h2 className={`text-[22px] md:text-[28px] mb-2 transition-all duration-300 italic ${
+                      activeProjectIndex === index 
+                        ? "underline decoration-gray-400 underline-offset-4 text-white" 
+                        : "text-gray-500 hover:text-gray-300"
+                    }`} style={{ 
+                      fontFamily: "'Crimson Pro'", 
+                      fontWeight: 400, 
+                      fontSize: 'clamp(22px, 4vw, 30px)',
+                      fontStyle: 'italic'
+                    }}>
+                      {project.title}
+                    </h2>
+                  </Link>
                   {activeProjectIndex === index && (
                     <p className="text-base leading-relaxed transition-opacity duration-300 mt-2 break-words whitespace-normal mb-4" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, wordWrap: 'break-word', overflowWrap: 'break-word', color: 'rgba(229, 231, 235, 1)', fontSize: '18px' }}>
                       {project.description}
@@ -346,77 +320,37 @@ export default function Home() {
                   projectRefs.current[index] = el;
                 }}
               >
-                {project.slug === "project-three" ? (
-                  <a
-                    href="https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group cursor-pointer transition-opacity hover:opacity-90 relative"
-                    onMouseEnter={() => {
-                      if (activeProjectIndex !== index) {
-                        setActiveProjectIndex(index);
-                      }
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
-                    }}
-                  >
-                    <div className="w-full bg-black rounded-lg overflow-hidden relative">
-                      <div className="aspect-[4/3] w-full relative bg-black flex items-center justify-center">
-                        {project.image ? (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full md:w-[85%] h-full md:h-[85%] object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-900 flex items-center justify-center">
-                            <span className="text-gray-600 text-sm">No image</span>
-                          </div>
-                        )}
-                      </div>
-                      {/* Hover Overlay with Project Title */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white italic" style={{ fontFamily: "'Crimson Pro'" }}>
-                          {project.title}
-                        </h3>
-                      </div>
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="block group cursor-pointer transition-opacity hover:opacity-90 relative"
+                  onMouseEnter={() => {
+                    if (activeProjectIndex !== index) {
+                      setActiveProjectIndex(index);
+                    }
+                  }}
+                >
+                  <div className="w-full bg-black rounded-lg overflow-hidden relative">
+                    <div className="aspect-[4/3] w-full relative bg-black flex items-center justify-center">
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full md:w-[85%] h-full md:h-[85%] object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-900 flex items-center justify-center">
+                          <span className="text-gray-600 text-sm">No image</span>
+                        </div>
+                      )}
                     </div>
-                  </a>
-                ) : (
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="block group cursor-pointer transition-opacity hover:opacity-90 relative"
-                    onMouseEnter={() => {
-                      if (activeProjectIndex !== index) {
-                        setActiveProjectIndex(index);
-                      }
-                    }}
-                  >
-                    <div className="w-full bg-black rounded-lg overflow-hidden relative">
-                      <div className="aspect-[4/3] w-full relative bg-black flex items-center justify-center">
-                        {project.image ? (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full md:w-[85%] h-full md:h-[85%] object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-900 flex items-center justify-center">
-                            <span className="text-gray-600 text-sm">No image</span>
-                          </div>
-                        )}
-                      </div>
-                      {/* Hover Overlay with Project Title */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <h3 className="text-2xl md:text-3xl font-light text-white italic" style={{ fontFamily: "'Crimson Pro'" }}>
-                          {project.title}
-                        </h3>
-                      </div>
+                    {/* Hover Overlay with Project Title */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <h3 className="text-2xl md:text-3xl font-light text-white italic" style={{ fontFamily: "'Crimson Pro'" }}>
+                        {project.title}
+                      </h3>
                     </div>
-                  </Link>
-                )}
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -429,8 +363,8 @@ export default function Home() {
           {/* Left Column - Aligned with Selected work titles */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
-              className="text-2xl md:text-4xl mb-6 font-light text-white"
-              style={{ fontFamily: "'Crimson Pro'", fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%' }}
+              className="text-2xl md:text-4xl mb-6 font-light text-white italic"
+              style={{ fontFamily: "'Crimson Pro'", fontSize: 'clamp(28px, 6vw, 48px)', lineHeight: '100%', fontStyle: 'italic' }}
             >
               I build things with AI tools.
             </h2>
