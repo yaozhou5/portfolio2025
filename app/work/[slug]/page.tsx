@@ -180,7 +180,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight max-w-4xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight max-w-4xl italic" style={{ fontFamily: "'Crimson Pro'" }}>
             {project.headline}
           </h1>
 
