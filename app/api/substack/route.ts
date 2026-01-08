@@ -22,11 +22,11 @@ export async function GET() {
       const itemContent = match[1];
       
       // Try multiple patterns for title (CDATA, escaped, plain)
-      const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/s);
+      const titleMatch = itemContent.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>|<title>([\s\S]*?)<\/title>/);
       // Try multiple patterns for link
-      const linkMatch = itemContent.match(/<link>(.*?)<\/link>|<link><!\[CDATA\[(.*?)\]\]><\/link>/s);
+      const linkMatch = itemContent.match(/<link>([\s\S]*?)<\/link>|<link><!\[CDATA\[([\s\S]*?)\]\]><\/link>/);
       // Try multiple patterns for date
-      const pubDateMatch = itemContent.match(/<pubDate>(.*?)<\/pubDate>|<dc:date>(.*?)<\/dc:date>/s);
+      const pubDateMatch = itemContent.match(/<pubDate>([\s\S]*?)<\/pubDate>|<dc:date>([\s\S]*?)<\/dc:date>/);
       
       if (titleMatch && linkMatch) {
         const title = (titleMatch[1] || titleMatch[2] || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
