@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { notFound, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { notFound, useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const projects: Record<
   string,
@@ -73,6 +73,8 @@ const projects: Record<
 
 export default function WorkPage({ params }: { params: { slug: string } }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const project = projects[params.slug];
 
@@ -122,36 +124,124 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
   }, [params.slug, project]);
 
   return (
-    <main className="min-h-screen bg-black text-white">
-        {/* Top Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-black">
-        <div className="flex items-center justify-between px-6 md:px-12 py-4">
-          <Link
-            href="/"
-            className="text-[15px] text-gray-400 hover:text-white transition-colors"
-          >
-            ← Back
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/"
-              className="text-[15px] text-gray-400 hover:text-white transition-colors"
+    <main className="min-h-screen bg-gray-100 text-gray-900">
+      {/* Sticky Top Navigation - Minimal Style */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <div className="px-6 md:px-12">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo on the left */}
+            <Link 
+              href="/" 
+              className="flex items-center justify-center h-16 transition-colors duration-200 hover:opacity-70"
             >
-              Home
+              <svg 
+                width="32" 
+                height="32" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M 8.5 2 L 12 8 M 15.5 2 L 12 8 M 12 8 L 12 14" 
+                  stroke="#111827" 
+                  strokeWidth="3" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
-            <Link
-              href="/about"
-              className="text-[15px] text-gray-400 hover:text-white transition-colors"
+
+            {/* Navigation links on the right */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Home */}
+              <Link 
+                href="/" 
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-200 ${
+                  pathname === '/'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                Home
+              </Link>
+              
+              {/* About */}
+              <Link 
+                href="/about" 
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-200 ${
+                  pathname === '/about'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                About
+              </Link>
+              
+              {/* Resume */}
+              <a
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-1.5 rounded-full text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                Resume
+              </a>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden flex flex-col gap-1.5 p-2 text-gray-900"
+              aria-label="Toggle menu"
             >
-              About
-            </Link>
-            <Link
-              href="/#writing"
-              className="text-[15px] text-gray-400 hover:text-white transition-colors"
-            >
-              Writing
-            </Link>
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            </button>
           </div>
+          
+          {/* Mobile menu dropdown */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-200 py-4 space-y-3">
+              <Link 
+                href="/" 
+                className={`block px-4 py-2 rounded-full text-base ${
+                  pathname === '/'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className={`block px-4 py-2 rounded-full text-base ${
+                  pathname === '/about'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <a
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 rounded-full text-base text-gray-700"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resume
+              </a>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -161,46 +251,46 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           {/* Project Name and Category */}
           <div className="flex items-center gap-3 mb-4">
             <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
-            <span className="text-[15px] text-gray-400">{project.title}</span>
+            <span className="text-[15px] text-gray-600" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>{project.title}</span>
             <span className="text-[15px] text-gray-600">·</span>
-            <span className="text-[15px] text-gray-400">{project.category}</span>
+            <span className="text-[15px] text-gray-600" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>{project.category}</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 tracking-tight leading-tight max-w-4xl italic" style={{ fontFamily: "'Crimson Pro'" }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight leading-tight max-w-4xl" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>
             {project.headline}
           </h1>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-12 max-w-3xl">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 max-w-3xl" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
             {project.description}
           </p>
 
           {/* Info Boxes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div className="bg-gray-900 rounded-[24px] p-6 border border-gray-800">
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">
+            <div className="bg-white rounded-[30px] p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-xs text-gray-600 uppercase tracking-wide mb-3" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                 Role
               </p>
-              <p className="text-base text-gray-300">{project.role}</p>
+              <p className="text-base text-gray-900" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>{project.role}</p>
             </div>
-            <div className="bg-gray-900 rounded-[24px] p-6 border border-gray-800">
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">
+            <div className="bg-white rounded-[30px] p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-xs text-gray-600 uppercase tracking-wide mb-3" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                 Team
               </p>
               <div className="space-y-1">
                 {project.team.map((member, index) => (
-                  <p key={index} className="text-base text-gray-300">
+                  <p key={index} className="text-base text-gray-900" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                     {member}
                   </p>
                 ))}
               </div>
             </div>
-            <div className="bg-gray-900 rounded-[24px] p-6 border border-gray-800">
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">
+            <div className="bg-white rounded-[30px] p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-xs text-gray-600 uppercase tracking-wide mb-3" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                 Duration
               </p>
-              <p className="text-base text-gray-300">{project.duration}</p>
+              <p className="text-base text-gray-900" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>{project.duration}</p>
             </div>
           </div>
         </div>
@@ -209,10 +299,10 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       {/* Overview Section */}
       <section className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-8">Overview</h2>
+          <h2 className="text-[32px] md:text-[40px] mb-8" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>Overview</h2>
 
           <div className="mb-12">
-            <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-8 max-w-3xl">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-3xl" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
               {project.overview}
             </p>
             {params.slug === "project-three" && (
@@ -220,8 +310,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
                 onClick={() => {
                   window.open("https://pitch.com/v/hilink-case-study-presentation---yao-zhou-gw7v6v", "_blank", "noopener,noreferrer");
                 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 border border-gray-700 rounded-[24px] text-white font-light hover:bg-gray-800 hover:border-gray-600 transition-colors cursor-pointer"
-                style={{ fontFamily: "'Post Grotesk', sans-serif" }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 rounded-[30px] text-white hover:bg-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
               >
                 <span>View Case Study Presentation</span>
                 <span>→</span>
@@ -231,12 +321,12 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
 
           {/* Goals */}
           <div>
-            <h3 className="text-xl md:text-2xl font-light mb-6">Goals</h3>
+            <h3 className="text-[24px] md:text-[28px] mb-6" style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}>Goals</h3>
             <div className="space-y-6">
               {project.goals.map((goal, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-500 rounded-full mt-2"></div>
-                  <p className="text-lg text-gray-300 font-light leading-relaxed">
+                  <p className="text-lg text-gray-700 leading-relaxed" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                     {goal}
                   </p>
                 </div>
@@ -249,9 +339,9 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       {/* Main Project Image */}
       <section className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
-          <div className="w-full bg-gray-900 rounded-[24px] overflow-hidden">
-            <div className="aspect-video w-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-              <span className="text-gray-600">Project Screenshot</span>
+          <div className="w-full bg-white rounded-[30px] overflow-hidden shadow-lg">
+            <div className="aspect-video w-full bg-gray-100 flex items-center justify-center">
+              <span className="text-gray-500">Project Screenshot</span>
             </div>
           </div>
         </div>
@@ -260,26 +350,26 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       {/* Content Section */}
       <section className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-8 italic" style={{ fontFamily: "'Crimson Pro'" }}>
+          <h2 className="text-[32px] md:text-[40px] mb-8" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>
             {project.title}
           </h2>
 
-          <div className="prose prose-invert max-w-none">
-            <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-8">
+          <div className="prose max-w-none">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
               {/* Project content will be added here */}
             </p>
           </div>
 
           {/* Additional Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="bg-gray-900 rounded-[24px] overflow-hidden">
-              <div className="aspect-[4/3] w-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <span className="text-gray-600 text-sm">Image</span>
+            <div className="bg-white rounded-[30px] overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+              <div className="aspect-[4/3] w-full bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-500 text-sm">Image</span>
               </div>
             </div>
-            <div className="bg-gray-900 rounded-[24px] overflow-hidden">
-              <div className="aspect-[4/3] w-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <span className="text-gray-600 text-sm">Image</span>
+            <div className="bg-white rounded-[30px] overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+              <div className="aspect-[4/3] w-full bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-500 text-sm">Image</span>
               </div>
             </div>
           </div>
@@ -289,7 +379,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       {/* Featured Work Section */}
       <section className="px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-light mb-12 text-gray-300">
+          <h2 className="text-[32px] md:text-[40px] mb-12 text-gray-900" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>
             Featured work
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -303,12 +393,12 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
                 href={`/work/${project.slug}`}
                 className="group"
               >
-                <div className="bg-gray-900 rounded-[24px] overflow-hidden border border-gray-800 hover:border-gray-700 transition-colors">
-                  <div className="aspect-[4/3] w-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                    <span className="text-gray-600 text-sm">Image</span>
+                <div className="bg-white rounded-[30px] overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="aspect-[4/3] w-full bg-gray-100 flex items-center justify-center">
+                    <span className="text-gray-500 text-sm">Image</span>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-light text-gray-300 group-hover:text-white transition-colors">
+                    <h3 className="text-lg text-gray-900 group-hover:text-gray-700 transition-colors" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>
                       {project.title}
                     </h3>
                   </div>
@@ -323,11 +413,12 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
       <footer className="px-6 py-16 md:py-24 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <p className="text-gray-400 text-sm">100% Built with Cursor</p>
+            <p className="text-gray-600 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>100% Built with Cursor</p>
             <div className="flex gap-6">
               <a
                 href="mailto:shay@example.com"
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
               >
                 Email
               </a>
@@ -335,7 +426,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
               >
                 LinkedIn
               </a>
@@ -343,7 +435,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
               >
                 GitHub
               </a>

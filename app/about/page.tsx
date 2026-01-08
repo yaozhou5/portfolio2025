@@ -1,18 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import Dock from "../components/Dock";
-import { VscHome, VscFolder, VscAccount } from "react-icons/vsc";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function About() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   // Track mouse position for parallax effect
@@ -56,24 +56,6 @@ export default function About() {
     };
   }, []);
 
-  // Navigation handlers for Dock
-  const handleHomeClick = () => {
-    router.push('/');
-  };
-
-  const handleWorkClick = () => {
-    router.push('/work');
-  };
-
-  const handleAboutClick = () => {
-    router.push('/about');
-  };
-
-  const dockItems = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: handleHomeClick },
-    { icon: <VscFolder size={18} />, label: 'Work', onClick: handleWorkClick },
-    { icon: <VscAccount size={18} />, label: 'About', onClick: handleAboutClick },
-  ];
 
   const timelineEvents = [
     { year: '2012', event: 'Wrote my first theatre play' },
@@ -103,26 +85,136 @@ export default function About() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-x-hidden">
-      {/* Animated background gradient */}
-      <div 
-        className="fixed inset-0 opacity-20 pointer-events-none transition-opacity duration-1000"
-        style={{
-          background: `radial-gradient(circle at ${50 + mousePosition.x * 0.1}% ${50 + mousePosition.y * 0.1}%, rgba(255,255,255,0.03) 0%, transparent 50%)`,
-        }}
-      />
+    <main className="min-h-screen bg-gray-100 text-gray-900 relative overflow-x-hidden">
+      {/* Sticky Top Navigation - Minimal Style */}
+      <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <div className="px-6 md:px-12">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo on the left */}
+            <Link 
+              href="/" 
+              className="flex items-center justify-center h-16 transition-colors duration-200 hover:opacity-70"
+            >
+              <svg 
+                width="32" 
+                height="32" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M 8.5 2 L 12 8 M 15.5 2 L 12 8 M 12 8 L 12 14" 
+                  stroke="#111827" 
+                  strokeWidth="3" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
 
+            {/* Navigation links on the right */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Home */}
+              <Link 
+                href="/" 
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-200 ${
+                  pathname === '/'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                Home
+              </Link>
+              
+              {/* About - Active */}
+              <Link 
+                href="/about" 
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-200 ${
+                  pathname === '/about'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700 hover:text-gray-900'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                About
+              </Link>
+              
+              {/* Resume */}
+              <a
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-1.5 rounded-full text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              >
+                Resume
+              </a>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden flex flex-col gap-1.5 p-2 text-gray-900"
+              aria-label="Toggle menu"
+            >
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`w-5 h-[1.5px] bg-gray-900 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            </button>
+          </div>
+          
+          {/* Mobile menu dropdown */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-200 py-4 space-y-3">
+              <Link 
+                href="/" 
+                className={`block px-4 py-2 rounded-full text-base ${
+                  pathname === '/'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                className={`block px-4 py-2 rounded-full text-base ${
+                  pathname === '/about'
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'text-gray-700'
+                }`}
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <a
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 rounded-full text-base text-gray-700"
+                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resume
+              </a>
+            </div>
+          )}
+        </div>
+      </nav>
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-32 relative z-10">
         {/* Page Title */}
         <h1 
-          className="text-4xl md:text-5xl lg:text-6xl mb-16 md:mb-20 text-white"
+          className="text-4xl md:text-5xl lg:text-6xl mb-16 md:mb-20 text-gray-900"
           style={{ 
-            fontFamily: "'Crimson Pro', serif", 
-            fontWeight: 400,
-            fontStyle: 'italic',
+            fontFamily: "'Clash Display'", 
+            fontWeight: 600,
           }}
         >
-          About
+          My Journey
         </h1>
 
         {/* Timeline Section - Simplified horizontal timeline */}
@@ -130,19 +222,6 @@ export default function About() {
           className="mb-24 md:mb-32 overflow-visible"
           ref={(el) => { sectionRefs.current['timeline'] = el; }}
         >
-          <h3 
-            className="text-3xl md:text-4xl mb-16 text-white"
-            style={{ 
-              fontFamily: "'Post Grotesk', sans-serif", 
-              fontWeight: 400,
-              opacity: isVisible['timeline'] ? 1 : 0,
-              transform: isVisible['timeline'] ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-            }}
-          >
-            Journey
-          </h3>
-          
           <div 
             className="relative overflow-visible"
             style={{
@@ -154,7 +233,7 @@ export default function About() {
             {/* Desktop: Horizontal timeline */}
             <div className="hidden md:block relative overflow-visible">
               {/* Horizontal line */}
-              <div className="absolute top-6 left-0 right-0 h-px bg-gray-800" />
+              <div className="absolute top-6 left-0 right-0 h-px bg-gray-300" />
               
               {/* Timeline items */}
               <div className="flex items-start">
@@ -171,11 +250,11 @@ export default function About() {
                     {/* Circle */}
                     <div className="relative z-10 mb-4">
                       <div 
-                        className={`w-3 h-3 rounded-full bg-white transition-all duration-300 ${
-                          hoveredIndex === index ? 'scale-150 shadow-lg shadow-white/20' : ''
+                        className={`w-3 h-3 rounded-full bg-gray-900 transition-all duration-300 ${
+                          hoveredIndex === index ? 'scale-150 shadow-lg shadow-gray-900/20' : ''
                         }`}
                         style={{
-                          boxShadow: hoveredIndex === index ? '0 0 12px rgba(255, 255, 255, 0.3)' : 'none',
+                          boxShadow: hoveredIndex === index ? '0 0 12px rgba(0, 0, 0, 0.3)' : 'none',
                         }}
                       />
                     </div>
@@ -183,7 +262,7 @@ export default function About() {
                     {/* Year label */}
                     <div 
                       className={`text-sm transition-colors duration-300 text-center ${
-                        hoveredIndex === index ? 'text-white' : 'text-gray-500'
+                        hoveredIndex === index ? 'text-gray-900' : 'text-gray-600'
                       }`}
                       style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                     >
@@ -193,7 +272,7 @@ export default function About() {
                     {/* Tooltip on hover */}
                     {hoveredIndex === index && (
                       <div 
-                        className="absolute top-12 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-black/90 backdrop-blur-sm border border-gray-700 shadow-xl min-w-[180px] text-center whitespace-normal"
+                        className="absolute top-12 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-gray-900 backdrop-blur-sm shadow-2xl min-w-[180px] text-center whitespace-normal"
                         style={{
                           opacity: 0.95,
                           pointerEvents: 'auto',
@@ -206,7 +285,7 @@ export default function About() {
                           {item.event}
                         </div>
                         {/* Tooltip arrow */}
-                        <div className="absolute -top-1.5 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-black/90 border-l border-t border-gray-700 rotate-45" />
+                        <div className="absolute -top-1.5 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gray-900 border-l border-t border-gray-300 rotate-45" />
                       </div>
                     )}
                   </div>
@@ -218,25 +297,25 @@ export default function About() {
             {/* Mobile: Vertical Timeline */}
             <div className="block md:hidden relative overflow-visible">
               {/* Vertical line on left */}
-              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-700" />
+              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-300" />
               
               {/* Stacked milestones */}
               <div className="space-y-12 pl-12">
                 {timelineEvents.map((item, index) => (
                   <div key={index} className="relative">
                     {/* Dot on line */}
-                    <div className="absolute -left-9 top-1 w-6 h-6 rounded-full bg-white border-4 border-black" />
+                    <div className="absolute -left-9 top-1 w-6 h-6 rounded-full bg-gray-100 border-4 border-gray-900" />
                     
                     {/* Content */}
                     <div>
                       <div 
-                        className="text-gray-400 text-xs uppercase tracking-wider mb-1"
+                        className="text-gray-600 text-xs uppercase tracking-wider mb-1"
                         style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                       >
                         {item.year}
                       </div>
                       <div 
-                        className="text-white text-lg font-semibold"
+                        className="text-gray-900 text-lg font-semibold"
                         style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 600 }}
                       >
                         {item.event}
@@ -269,13 +348,8 @@ export default function About() {
                   <img
                     src="/yao-profile-photo.jpg"
                     alt="Yao Zhou profile photo"
-                    className="w-full h-auto object-cover rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-                    style={{ 
-                      borderRadius: '14px',
-                      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
-                    }}
+                    className="w-full h-auto object-cover rounded-[30px] transition-transform duration-500 group-hover:scale-[1.02]"
                   />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </div>
             </div>
@@ -291,17 +365,17 @@ export default function About() {
               }}
             >
               <h3 
-                className="text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-white mb-4 italic"
+                className="text-[24px] md:text-[28px] leading-tight tracking-tight text-gray-900 mb-4 italic"
                 style={{ 
-                  fontFamily: "'Crimson Pro'", 
-                  fontWeight: 400,
+                  fontFamily: "'Clash Display'", 
+                  fontWeight: 500,
                 }}
               >
                 Thanks for taking a look around!
               </h3>
               
               <p 
-                className="text-xl md:text-2xl text-gray-300 mb-6"
+                className="text-xl md:text-2xl text-gray-700 mb-6"
                 style={{ 
                   fontFamily: "'Post Grotesk', sans-serif", 
                   fontWeight: 400,
@@ -312,21 +386,21 @@ export default function About() {
               
               <div className="space-y-4 max-w-2xl">
                 <p 
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-700 leading-relaxed"
                   style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                 >
                   I'm a versatile designer, builder, and storyteller with a self-starter streak and classic INTP curiosity. My background spans UX design, startups, theater, and filmmaking, so I see design as more than problem-solving — it's interactive storytelling.
                 </p>
                 
                 <p 
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-700 leading-relaxed"
                   style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
                 >
                   I've worked across small startups and unstructured teams, where I learned to adapt quickly, wear multiple hats, and push ideas from rough concepts into real products. I also co-founded and launched a wellness marketplace from the ground up, leading design and product through the full 0→1 journey.
                 </p>
                 
                 <p 
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-700 leading-relaxed"
                   style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
                 >
                   If any part of my work or story resonates with you, I'd love to connect. I'm currently open to new design opportunities and collaborations, especially on early-stage products.
@@ -338,48 +412,40 @@ export default function About() {
                     href="https://www.linkedin.com/in/yaozhou5/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 border border-gray-700 rounded-[24px] text-white hover:border-gray-600 transition-all duration-300 overflow-hidden"
+                    className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-[30px] text-gray-900 bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                   >
-                    <span className="relative z-10 flex items-center gap-2">
-                      <FaLinkedin size={18} />
-                      <span>LinkedIn</span>
-                    </span>
-                    <div className="absolute inset-0 bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <FaLinkedin size={18} />
+                    <span>LinkedIn</span>
                   </a>
                   
                   <a
                     href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 border border-gray-700 rounded-[24px] text-white hover:border-gray-600 transition-all duration-300 overflow-hidden"
+                    className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-[30px] text-gray-900 bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                   >
-                    <span className="relative z-10">Resume</span>
-                    <div className="absolute inset-0 bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span>Resume</span>
                   </a>
                   
                   <a
                     href="mailto:hello@yaozhou.me"
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 border border-gray-700 rounded-[24px] text-white hover:border-gray-600 transition-all duration-300 overflow-hidden"
+                    className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-[30px] text-gray-900 bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                   >
-                    <span className="relative z-10 flex items-center gap-2">
-                      <FaEnvelope size={18} />
-                      <span>Email</span>
-                    </span>
-                    <div className="absolute inset-0 bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <FaEnvelope size={18} />
+                    <span>Email</span>
                   </a>
                   
                   <a
                     href="https://byshay.substack.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 border border-gray-700 rounded-[24px] text-white hover:border-gray-600 transition-all duration-300 overflow-hidden"
+                    className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-[30px] text-gray-900 bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                   >
-                    <span className="relative z-10">Substack</span>
-                    <div className="absolute inset-0 bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span>Substack</span>
                   </a>
                 </div>
               </div>
@@ -393,7 +459,7 @@ export default function About() {
           ref={(el) => { sectionRefs.current['coffee'] = el; }}
         >
           <div 
-            className="relative p-8 md:p-12 border border-gray-800 rounded-[24px] bg-gradient-to-br from-gray-900/50 to-black overflow-hidden group"
+            className="relative p-8 md:p-12 rounded-[30px] bg-white overflow-hidden group shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             style={{
               opacity: isVisible['coffee'] ? 1 : 0,
               transform: isVisible['coffee'] ? 'translateY(0)' : 'translateY(30px)',
@@ -402,21 +468,21 @@ export default function About() {
           >
             <div className="relative z-10">
               <h3 
-                className="text-3xl md:text-4xl mb-6 text-white"
-                style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                className="text-[24px] md:text-[28px] mb-6 text-gray-900"
+                style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}
               >
                 ☕ Coffee in Amsterdam?
               </h3>
               
               <div className="space-y-4 mb-8 max-w-3xl">
                 <p 
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-700 leading-relaxed"
                   style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
                 >
                   Always down to meet over coffee (or Zoom if you're not here).
                 </p>
                 <p 
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-700 leading-relaxed"
                   style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
                 >
                   Just send me a quick message and I'll reach out ☺️
@@ -425,17 +491,13 @@ export default function About() {
               
               <a
                 href="mailto:hello@yaozhou.me?subject=Coffee Chat in Amsterdam&body=Hey Shay, let's grab coffee!"
-                className="group/btn relative inline-flex items-center gap-2 px-8 py-4 border-2 border-white rounded-[24px] text-white hover:bg-white hover:text-black transition-all duration-300 font-medium"
+                className="group/btn relative inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-[30px] hover:bg-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 font-medium"
                 style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 500 }}
               >
                 <span>Yes! Let's do it</span>
                 <span className="transform group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
               </a>
             </div>
-            
-            {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-700" />
           </div>
         </section>
 
@@ -450,7 +512,7 @@ export default function About() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors text-sm group"
             style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
           >
             <span className="transform group-hover:-translate-x-1 transition-transform duration-300">←</span>
@@ -459,13 +521,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Dock Navigation */}
-      <Dock 
-        items={dockItems}
-        panelHeight={68}
-        baseItemSize={50}
-        magnification={40}
-      />
     </main>
   );
 }

@@ -1,0 +1,528 @@
+/**
+ * Typography System CSS Variables
+ * Comprehensive type scale for Clash Display + Post Grotesk
+ * Exact specifications for UX design portfolio
+ */
+
+:root {
+  /* ============================================
+     FONT FAMILIES
+     ============================================ */
+  --font-heading: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Post Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+
+  /* ============================================
+     DESKTOP TYPOGRAPHY (1440px+)
+     ============================================ */
+  
+  /* H1 - Page Title (e.g., "Yao Zhou" or main project title) */
+  --text-h1-font-family: var(--font-heading);
+  --text-h1-size: 4.5rem; /* 72px */
+  --text-h1-weight: 600;
+  --text-h1-line-height: 1.1; /* 79px */
+  --text-h1-letter-spacing: -0.02em;
+
+  /* H2 - Section Titles (e.g., "From Swipes to Actual Dates") */
+  --text-h2-font-family: var(--font-heading);
+  --text-h2-size: 3rem; /* 48px */
+  --text-h2-weight: 600;
+  --text-h2-line-height: 1.2; /* 58px */
+  --text-h2-letter-spacing: -0.01em;
+
+  /* H3 - Subsection Titles */
+  --text-h3-font-family: var(--font-heading);
+  --text-h3-size: 2rem; /* 32px */
+  --text-h3-weight: 500;
+  --text-h3-line-height: 1.3; /* 42px */
+  --text-h3-letter-spacing: -0.01em;
+
+  /* H4 - Component Titles, Minor Headings */
+  --text-h4-font-family: var(--font-heading);
+  --text-h4-size: 1.5rem; /* 24px */
+  --text-h4-weight: 500;
+  --text-h4-line-height: 1.4; /* 34px */
+  --text-h4-letter-spacing: 0;
+
+  /* Subhead/Intro Text */
+  --text-subhead-font-family: var(--font-body);
+  --text-subhead-size: 1.5rem; /* 24px */
+  --text-subhead-weight: 400;
+  --text-subhead-line-height: 1.6; /* 38px */
+  --text-subhead-letter-spacing: 0;
+
+  /* Body Large - Featured content, pull quotes */
+  --text-body-large-font-family: var(--font-body);
+  --text-body-large-size: 1.25rem; /* 20px */
+  --text-body-large-weight: 400;
+  --text-body-large-line-height: 1.6; /* 32px */
+  --text-body-large-letter-spacing: 0;
+
+  /* Body Regular - Main paragraph text */
+  --text-body-font-family: var(--font-body);
+  --text-body-size: 1.125rem; /* 18px */
+  --text-body-weight: 400;
+  --text-body-line-height: 1.7; /* 31px */
+  --text-body-letter-spacing: 0;
+
+  /* Body Small - Secondary information */
+  --text-body-small-font-family: var(--font-body);
+  --text-body-small-size: 1rem; /* 16px */
+  --text-body-small-weight: 400;
+  --text-body-small-line-height: 1.6; /* 26px */
+  --text-body-small-letter-spacing: 0;
+
+  /* Caption/Labels - Project metadata, dates, tags */
+  --text-caption-font-family: var(--font-body);
+  --text-caption-size: 0.875rem; /* 14px */
+  --text-caption-weight: 500;
+  --text-caption-line-height: 1.5; /* 21px */
+  --text-caption-letter-spacing: 0.01em;
+  --text-caption-text-transform: none;
+
+  /* Button Text */
+  --text-button-font-family: var(--font-body);
+  --text-button-size: 1rem; /* 16px */
+  --text-button-weight: 500;
+  --text-button-line-height: 1.5; /* 24px */
+  --text-button-letter-spacing: 0.01em;
+
+  /* ============================================
+     SPACING VARIABLES
+     ============================================ */
+  
+  /* Space after headings */
+  --spacing-after-h1: 1.5rem; /* 24px */
+  --spacing-after-h2: 1.25rem; /* 20px */
+  --spacing-after-h3: 1rem; /* 16px */
+  --spacing-after-h4: 0.75rem; /* 12px */
+  
+  /* Space between paragraphs */
+  --spacing-paragraph: 1rem; /* 16px */
+  
+  /* Space between major sections */
+  --spacing-section-desktop: 5rem; /* 80px */
+  --spacing-section-tablet: 3.75rem; /* 60px */
+  --spacing-section-mobile: 3rem; /* 48px */
+
+  /* Max-Width for Body Text */
+  --max-width-body: 680px; /* 65-75 characters per line at 18px */
+
+  /* ============================================
+     TEXT COLORS
+     ============================================ */
+  --text-primary: #1a1a1a; /* gray-900 */
+  --text-secondary: #4a4a4a; /* gray-600 */
+  --text-tertiary: #6b6b6b; /* gray-500 */
+  --text-muted: #9a9a9a; /* gray-400 */
+  --text-inverse: #ffffff; /* white */
+  --text-link: #1a1a1a;
+  --text-link-hover: #000000;
+}
+
+/* ============================================
+   TABLET TYPOGRAPHY (768px - 1439px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1439px) {
+  :root {
+    /* H1 */
+    --text-h1-size: 3.5rem; /* 56px */
+    --text-h1-weight: 600;
+    --text-h1-line-height: 1.1;
+    --text-h1-letter-spacing: -0.02em;
+
+    /* H2 */
+    --text-h2-size: 2.5rem; /* 40px */
+    --text-h2-weight: 600;
+    --text-h2-line-height: 1.2;
+    --text-h2-letter-spacing: -0.01em;
+
+    /* H3 */
+    --text-h3-size: 1.75rem; /* 28px */
+    --text-h3-weight: 500;
+    --text-h3-line-height: 1.3;
+    --text-h3-letter-spacing: -0.01em;
+
+    /* H4 */
+    --text-h4-size: 1.375rem; /* 22px */
+    --text-h4-weight: 500;
+    --text-h4-line-height: 1.4;
+    --text-h4-letter-spacing: 0;
+
+    /* Subhead */
+    --text-subhead-size: 1.375rem; /* 22px */
+    --text-subhead-weight: 400;
+    --text-subhead-line-height: 1.6;
+    --text-subhead-letter-spacing: 0;
+
+    /* Body Large */
+    --text-body-large-size: 1.1875rem; /* 19px */
+    --text-body-large-weight: 400;
+    --text-body-large-line-height: 1.6;
+    --text-body-large-letter-spacing: 0;
+
+    /* Body Regular */
+    --text-body-size: 1.0625rem; /* 17px */
+    --text-body-weight: 400;
+    --text-body-line-height: 1.7;
+    --text-body-letter-spacing: 0;
+
+    /* Body Small */
+    --text-body-small-size: 0.9375rem; /* 15px */
+    --text-body-small-weight: 400;
+    --text-body-small-line-height: 1.6;
+    --text-body-small-letter-spacing: 0;
+
+    /* Caption */
+    --text-caption-size: 0.8125rem; /* 13px */
+    --text-caption-weight: 500;
+    --text-caption-line-height: 1.5;
+    --text-caption-letter-spacing: 0.01em;
+
+    /* Button */
+    --text-button-size: 0.9375rem; /* 15px */
+    --text-button-weight: 500;
+    --text-button-line-height: 1.5;
+    --text-button-letter-spacing: 0.01em;
+
+    /* Spacing */
+    --spacing-section-desktop: var(--spacing-section-tablet);
+  }
+}
+
+/* ============================================
+   MOBILE TYPOGRAPHY (375px - 767px)
+   ============================================ */
+@media (max-width: 767px) {
+  :root {
+    /* H1 */
+    --text-h1-size: 2.5rem; /* 40px */
+    --text-h1-weight: 600;
+    --text-h1-line-height: 1.1;
+    --text-h1-letter-spacing: -0.02em;
+
+    /* H2 */
+    --text-h2-size: 2rem; /* 32px */
+    --text-h2-weight: 600;
+    --text-h2-line-height: 1.2;
+    --text-h2-letter-spacing: -0.01em;
+
+    /* H3 */
+    --text-h3-size: 1.5rem; /* 24px */
+    --text-h3-weight: 500;
+    --text-h3-line-height: 1.3;
+    --text-h3-letter-spacing: -0.01em;
+
+    /* H4 */
+    --text-h4-size: 1.25rem; /* 20px */
+    --text-h4-weight: 500;
+    --text-h4-line-height: 1.4;
+    --text-h4-letter-spacing: 0;
+
+    /* Subhead */
+    --text-subhead-size: 1.25rem; /* 20px */
+    --text-subhead-weight: 400;
+    --text-subhead-line-height: 1.6;
+    --text-subhead-letter-spacing: 0;
+
+    /* Body Large */
+    --text-body-large-size: 1.125rem; /* 18px */
+    --text-body-large-weight: 400;
+    --text-body-large-line-height: 1.6;
+    --text-body-large-letter-spacing: 0;
+
+    /* Body Regular */
+    --text-body-size: 1rem; /* 16px */
+    --text-body-weight: 400;
+    --text-body-line-height: 1.7;
+    --text-body-letter-spacing: 0;
+
+    /* Body Small */
+    --text-body-small-size: 0.875rem; /* 14px */
+    --text-body-small-weight: 400;
+    --text-body-small-line-height: 1.6;
+    --text-body-small-letter-spacing: 0;
+
+    /* Caption */
+    --text-caption-size: 0.75rem; /* 12px */
+    --text-caption-weight: 500;
+    --text-caption-line-height: 1.5;
+    --text-caption-letter-spacing: 0.01em;
+
+    /* Button */
+    --text-button-size: 1rem; /* 16px */
+    --text-button-weight: 500;
+    --text-button-line-height: 1.5;
+    --text-button-letter-spacing: 0.01em;
+
+    /* Spacing */
+    --spacing-section-desktop: var(--spacing-section-mobile);
+  }
+}
+
+/* ============================================
+   SEMANTIC HTML STYLES
+   ============================================ */
+
+h1 {
+  font-family: var(--text-h1-font-family);
+  font-size: var(--text-h1-size);
+  font-weight: var(--text-h1-weight);
+  line-height: var(--text-h1-line-height);
+  letter-spacing: var(--text-h1-letter-spacing);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-after-h1);
+}
+
+h2 {
+  font-family: var(--text-h2-font-family);
+  font-size: var(--text-h2-size);
+  font-weight: var(--text-h2-weight);
+  line-height: var(--text-h2-line-height);
+  letter-spacing: var(--text-h2-letter-spacing);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-after-h2);
+}
+
+h3 {
+  font-family: var(--text-h3-font-family);
+  font-size: var(--text-h3-size);
+  font-weight: var(--text-h3-weight);
+  line-height: var(--text-h3-line-height);
+  letter-spacing: var(--text-h3-letter-spacing);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-after-h3);
+}
+
+h4 {
+  font-family: var(--text-h4-font-family);
+  font-size: var(--text-h4-size);
+  font-weight: var(--text-h4-weight);
+  line-height: var(--text-h4-line-height);
+  letter-spacing: var(--text-h4-letter-spacing);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-after-h4);
+}
+
+h5,
+h6 {
+  font-family: var(--text-caption-font-family);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+  letter-spacing: var(--text-caption-letter-spacing);
+  text-transform: var(--text-caption-text-transform);
+  color: var(--text-secondary);
+}
+
+p {
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-paragraph);
+  max-width: var(--max-width-body);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* H1 */
+.text-h1 {
+  font-family: var(--text-h1-font-family);
+  font-size: var(--text-h1-size);
+  font-weight: var(--text-h1-weight);
+  line-height: var(--text-h1-line-height);
+  letter-spacing: var(--text-h1-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* H2 */
+.text-h2 {
+  font-family: var(--text-h2-font-family);
+  font-size: var(--text-h2-size);
+  font-weight: var(--text-h2-weight);
+  line-height: var(--text-h2-line-height);
+  letter-spacing: var(--text-h2-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* H3 */
+.text-h3 {
+  font-family: var(--text-h3-font-family);
+  font-size: var(--text-h3-size);
+  font-weight: var(--text-h3-weight);
+  line-height: var(--text-h3-line-height);
+  letter-spacing: var(--text-h3-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* H4 */
+.text-h4 {
+  font-family: var(--text-h4-font-family);
+  font-size: var(--text-h4-size);
+  font-weight: var(--text-h4-weight);
+  line-height: var(--text-h4-line-height);
+  letter-spacing: var(--text-h4-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* Subhead/Intro Text */
+.text-subhead {
+  font-family: var(--text-subhead-font-family);
+  font-size: var(--text-subhead-size);
+  font-weight: var(--text-subhead-weight);
+  line-height: var(--text-subhead-line-height);
+  letter-spacing: var(--text-subhead-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* Body Large */
+.text-body-large {
+  font-family: var(--text-body-large-font-family);
+  font-size: var(--text-body-large-size);
+  font-weight: var(--text-body-large-weight);
+  line-height: var(--text-body-large-line-height);
+  letter-spacing: var(--text-body-large-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* Body Regular */
+.text-body {
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* Body Small */
+.text-body-small {
+  font-family: var(--text-body-small-font-family);
+  font-size: var(--text-body-small-size);
+  font-weight: var(--text-body-small-weight);
+  line-height: var(--text-body-small-line-height);
+  letter-spacing: var(--text-body-small-letter-spacing);
+  color: var(--text-primary);
+}
+
+/* Caption/Labels */
+.text-caption {
+  font-family: var(--text-caption-font-family);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+  letter-spacing: var(--text-caption-letter-spacing);
+  text-transform: var(--text-caption-text-transform);
+  color: var(--text-secondary);
+}
+
+/* Button Text */
+.text-button {
+  font-family: var(--text-button-font-family);
+  font-size: var(--text-button-size);
+  font-weight: var(--text-button-weight);
+  line-height: var(--text-button-line-height);
+  letter-spacing: var(--text-button-letter-spacing);
+}
+
+/* ============================================
+   SPACING UTILITY CLASSES
+   ============================================ */
+
+.spacing-after-h1 {
+  margin-bottom: var(--spacing-after-h1);
+}
+
+.spacing-after-h2 {
+  margin-bottom: var(--spacing-after-h2);
+}
+
+.spacing-after-h3 {
+  margin-bottom: var(--spacing-after-h3);
+}
+
+.spacing-after-h4 {
+  margin-bottom: var(--spacing-after-h4);
+}
+
+.spacing-paragraph {
+  margin-bottom: var(--spacing-paragraph);
+}
+
+.spacing-section {
+  margin-bottom: var(--spacing-section-desktop);
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .spacing-section {
+    margin-bottom: var(--spacing-section-tablet);
+  }
+}
+
+@media (max-width: 767px) {
+  .spacing-section {
+    margin-bottom: var(--spacing-section-mobile);
+  }
+}
+
+/* ============================================
+   MAX-WIDTH UTILITY CLASSES
+   ============================================ */
+
+.max-width-body {
+  max-width: var(--max-width-body);
+}
+
+/* ============================================
+   TEXT COLOR UTILITY CLASSES
+   ============================================ */
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-inverse {
+  color: var(--text-inverse);
+}
+
+/* ============================================
+   TEXT ON COVER IMAGES
+   ============================================ */
+
+/* Text overlay on cover images - ensures proper margins */
+.text-on-cover {
+  padding: 1.5rem 1rem; /* 24px vertical, 16px horizontal on mobile */
+}
+
+@media (min-width: 768px) {
+  .text-on-cover {
+    padding: 2rem 1.5rem; /* 32px vertical, 24px horizontal on tablet+ */
+  }
+}
+
+/* Container for text overlays on images */
+.cover-image-text-container {
+  padding: 1.5rem; /* 24px on mobile */
+}
+
+@media (min-width: 768px) {
+  .cover-image-text-container {
+    padding: 2rem; /* 32px on tablet+ */
+  }
+}
