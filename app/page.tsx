@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import AnimatedLogo from "./components/AnimatedLogo";
 
 export default function Home() {
   const router = useRouter();
@@ -12,6 +13,8 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const isHoveringRef = useRef(false);
   const [articles, setArticles] = useState([
     {
       title: "4 Reasons to Build (Only One Is Your Portfolio)",
@@ -37,19 +40,20 @@ export default function Home() {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const activeProjectIndexRef = useRef<number | null>(0);
+  const hoverEndTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const projects = [
-    {
-      title: "From Swipes to Actual Dates",
-      description: "MVP redesign for a dating App targeting Gen Z",
-      image: "/Afterhours_cover2.png",
-      slug: "afterhours",
-    },
     {
       title: "Decentralized News Reading",
       description: "Award-winning Web3 News Reading App concept",
       image: "/Decentralized.png",
       slug: "clearfeed",
+    },
+    {
+      title: "From Swipes to Actual Dates",
+      description: "MVP redesign for a dating App targeting Gen Z",
+      image: "/Afterhours_cover2.png",
+      slug: "afterhours",
     },
     {
       title: "Faster Co-Presenting, Less Friction",
@@ -127,6 +131,9 @@ export default function Home() {
     }
 
     const updateActiveProject = () => {
+      // Don't update from scroll if user is hovering (use ref for current value)
+      if (isHoveringRef.current) return;
+      
       // Find the project with the highest intersection ratio
       let maxRatio = 0;
       let maxIndex = -1;
@@ -170,8 +177,10 @@ export default function Home() {
                 // Clear ratio when project leaves view
                 intersectionRatios.delete(index);
               }
-              // Update active project whenever intersection changes
-              updateActiveProject();
+              // Only update if not hovering
+              if (!isHoveringRef.current) {
+                updateActiveProject();
+              }
             });
           },
           {
@@ -202,8 +211,12 @@ export default function Home() {
 
     return () => {
       observers.forEach((observer) => observer.disconnect());
+      if (hoverEndTimeoutRef.current) {
+        clearTimeout(hoverEndTimeoutRef.current);
+        hoverEndTimeoutRef.current = null;
+      }
     };
-  }, []);
+  }, []); // Remove isHovering from dependencies - we use ref instead
 
   // Fetch Substack articles
   useEffect(() => {
@@ -234,26 +247,7 @@ export default function Home() {
         <div className="px-6 md:px-12">
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
-            <Link 
-              href="/" 
-              className="flex items-center justify-center h-16 transition-colors duration-200 hover:opacity-70"
-            >
-              <svg 
-                width="32" 
-                height="32" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d="M 8.5 2 L 12 8 M 15.5 2 L 12 8 M 12 8 L 12 14" 
-                  stroke="#111827" 
-                  strokeWidth="3" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            <AnimatedLogo />
 
             {/* Navigation links on the right */}
             <div className="hidden md:flex items-center gap-4">
@@ -394,6 +388,25 @@ export default function Home() {
                   <Link
                     href={`/work/${project.slug}`}
                     className="block transition-all duration-300"
+                    onMouseEnter={() => {
+                      // Clear any pending hover end timeout
+                      if (hoverEndTimeoutRef.current) {
+                        clearTimeout(hoverEndTimeoutRef.current);
+                        hoverEndTimeoutRef.current = null;
+                      }
+                      isHoveringRef.current = true;
+                      setIsHovering(true);
+                      setActiveProjectIndex(index);
+                      activeProjectIndexRef.current = index;
+                    }}
+                    onMouseLeave={() => {
+                      // Add a delay before allowing scroll updates to resume
+                      hoverEndTimeoutRef.current = setTimeout(() => {
+                        isHoveringRef.current = false;
+                        setIsHovering(false);
+                        hoverEndTimeoutRef.current = null;
+                      }, 300); // 300ms delay
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       const projectElement = document.getElementById(`project-${project.slug}`);
@@ -445,9 +458,23 @@ export default function Home() {
                   href={`/work/${project.slug}`}
                   className="block group cursor-pointer transition-opacity hover:opacity-90 relative"
                   onMouseEnter={() => {
-                    if (activeProjectIndex !== index) {
-                      setActiveProjectIndex(index);
+                    // Clear any pending hover end timeout
+                    if (hoverEndTimeoutRef.current) {
+                      clearTimeout(hoverEndTimeoutRef.current);
+                      hoverEndTimeoutRef.current = null;
                     }
+                    isHoveringRef.current = true;
+                    setIsHovering(true);
+                    setActiveProjectIndex(index);
+                    activeProjectIndexRef.current = index;
+                  }}
+                  onMouseLeave={() => {
+                    // Add a delay before allowing scroll updates to resume
+                    hoverEndTimeoutRef.current = setTimeout(() => {
+                      isHoveringRef.current = false;
+                      setIsHovering(false);
+                      hoverEndTimeoutRef.current = null;
+                    }, 300); // 300ms delay
                   }}
                 >
                   <div className="w-full bg-transparent rounded-[30px] overflow-hidden relative">
@@ -459,8 +486,13 @@ export default function Home() {
                             alt={project.title}
                             className="w-full md:w-[85%] h-full md:h-[85%] object-cover rounded-[30px]"
                           />
-                          {/* Hover Overlay with Project Title - matches image size */}
-                          <div className="absolute w-full md:w-[85%] h-full md:h-[85%] bg-gray-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-[30px] p-6 md:p-8">
+                          {/* Highlight Overlay - shows when this project is active (hovered from left or right) */}
+                          <div 
+                            className="absolute w-full md:w-[85%] h-full md:h-[85%] bg-gray-900/60 transition-opacity duration-300 flex items-center justify-center rounded-[30px] p-6 md:p-8"
+                            style={{
+                              opacity: activeProjectIndex === index ? 1 : 0
+                            }}
+                          >
                             <h3 className="text-[24px] md:text-[28px] text-white px-4 md:px-6" style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}>
                               {project.title}
                             </h3>
