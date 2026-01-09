@@ -355,8 +355,8 @@ export default function Home() {
           <div className="w-full overflow-visible min-h-0">
             {/* Intro Text - Fades in/out based on hero visibility */}
             <div
-              className={`transition-opacity duration-500 mb-12 mt-0 ${
-                isHeroVisible ? "opacity-100" : "opacity-0"
+              className={`transition-opacity duration-500 mb-12 mt-0 opacity-100 md:transition-opacity ${
+                isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight leading-tight italic text-gray-900" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>
