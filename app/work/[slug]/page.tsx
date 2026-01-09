@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { notFound, useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import AnimatedLogo from "../../components/AnimatedLogo";
 
 const projects: Record<
   string,
@@ -130,26 +131,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
         <div className="px-6 md:px-12">
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
-            <Link 
-              href="/" 
-              className="flex items-center justify-center h-16 transition-colors duration-200 hover:opacity-70"
-            >
-              <svg 
-                width="32" 
-                height="32" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d="M 8.5 2 L 12 8 M 15.5 2 L 12 8 M 12 8 L 12 14" 
-                  stroke="#111827" 
-                  strokeWidth="3" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            <AnimatedLogo />
 
             {/* Navigation links on the right */}
             <div className="hidden md:flex items-center gap-4">
@@ -416,14 +398,14 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
             <p className="text-gray-600 text-sm" style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}>100% Built with Cursor</p>
             <div className="flex gap-6">
               <a
-                href="mailto:shay@example.com"
+                href="mailto:hello@yaozhou.me"
                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
                 style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
               >
                 Email
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/yaozhou5/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-gray-900 transition-colors text-sm"

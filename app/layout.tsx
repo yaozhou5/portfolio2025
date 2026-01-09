@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.shayworks.com/",
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({

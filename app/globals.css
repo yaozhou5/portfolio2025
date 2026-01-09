@@ -186,3 +186,12 @@ body {
   display: none;
 }
 
+/* Reduced motion support for animated logo */
+@media (prefers-reduced-motion: reduce) {
+  .logo-path {
+    animation: none !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+

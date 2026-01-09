@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import AnimatedLogo from "./components/AnimatedLogo";
+import SplitText from "../components/SplitText";
 
 export default function Home() {
   const router = useRouter();
@@ -218,6 +219,7 @@ export default function Home() {
     };
   }, []); // Remove isHovering from dependencies - we use ref instead
 
+
   // Fetch Substack articles
   useEffect(() => {
     const fetchArticles = async () => {
@@ -353,9 +355,21 @@ export default function Home() {
                 isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight leading-tight italic text-gray-900" style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}>
-                Yao Zhou
-              </h1>
+              <div style={{ fontFamily: "'Clash Display'", fontWeight: 600 }} className="overflow-visible">
+                <SplitText
+                  text="Yao Zhou"
+                  tag="h1"
+                  className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight leading-tight italic text-gray-900 overflow-visible"
+                  delay={100}
+                  duration={0.6}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 20 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.9}
+                  rootMargin="0px"
+                />
+              </div>
               <p className="text-lg md:text-[20px] text-gray-700 mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400 }}>
                 Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
@@ -363,7 +377,7 @@ export default function Home() {
               {/* Social Icons */}
               <div className="flex items-center gap-4">
                 <a
-                  href="https://linkedin.com/in/shay"
+                  href="https://www.linkedin.com/in/yaozhou5/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-gray-900 transition-colors"
@@ -372,9 +386,13 @@ export default function Home() {
                   <FaLinkedin size={20} />
                 </a>
                 <a
-                  href="mailto:shay@example.com"
+                  href="mailto:hello@yaozhou.me"
                   className="text-gray-700 hover:text-gray-900 transition-colors"
                   aria-label="Email"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.location.href = 'mailto:hello@yaozhou.me';
+                  }}
                 >
                   <FaEnvelope size={20} />
                 </a>

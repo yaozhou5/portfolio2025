@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import AnimatedLogo from "../components/AnimatedLogo";
 
 export default function About() {
   const router = useRouter();
@@ -91,26 +92,7 @@ export default function About() {
         <div className="px-6 md:px-12">
           <div className="flex items-center justify-between h-16">
             {/* Logo on the left */}
-            <Link 
-              href="/" 
-              className="flex items-center justify-center h-16 transition-colors duration-200 hover:opacity-70"
-            >
-              <svg 
-                width="32" 
-                height="32" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  d="M 8.5 2 L 12 8 M 15.5 2 L 12 8 M 12 8 L 12 14" 
-                  stroke="#111827" 
-                  strokeWidth="3" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            <AnimatedLogo />
 
             {/* Navigation links on the right */}
             <div className="hidden md:flex items-center gap-4">
