@@ -350,11 +350,11 @@ export default function Home() {
           <div className="w-full overflow-visible min-h-0">
             {/* Intro Text - Fades in/out based on hero visibility */}
             <div
-              className={`transition-opacity duration-500 mb-6 mt-0 opacity-100 md:transition-opacity ${
+              className={`transition-opacity duration-500 mb-10 mt-[10px] opacity-100 md:transition-opacity ${
                 isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
-              <p className="text-[34px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a', fontSize: '18px' }}>
+              <p className="text-[34px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a', fontSize: '24px' }}>
                 I'm a Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
               
@@ -417,9 +417,9 @@ export default function Home() {
                       }
                     }}
                   >
-                    <h3 className={`text-[24px] md:text-[28px] mb-2 transition-all duration-300 ${
+                    <h3 className={`text-[24px] md:text-[24px] mb-2 transition-all duration-300 ${
                       activeProjectIndex === index 
-                        ? "underline decoration-gray-600 underline-offset-4 text-gray-900" 
+                        ? "underline decoration-gray-600 decoration-1 underline-offset-4 text-gray-900" 
                         : "text-gray-600 hover:text-gray-800"
                     }`} style={{ 
                       fontFamily: "'Clash Display'", 
@@ -525,7 +525,7 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
               className="text-[28px] md:text-[40px] mb-6 text-gray-900"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
             >
               I build things with AI tools.
             </h2>
@@ -565,7 +565,7 @@ export default function Home() {
                     {/* Title with Tag */}
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <h3 
-                        className="text-[24px] md:text-[28px] text-gray-900 flex-1"
+                        className="text-[24px] md:text-[24px] text-gray-900 flex-1"
                         style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}
                       >
                         {project.name}
