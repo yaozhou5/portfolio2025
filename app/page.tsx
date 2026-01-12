@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import AnimatedLogo from "./components/AnimatedLogo";
-import SplitText from "../components/SplitText";
 
 export default function Home() {
   const router = useRouter();
@@ -351,31 +350,16 @@ export default function Home() {
           <div className="w-full overflow-visible min-h-0">
             {/* Intro Text - Fades in/out based on hero visibility */}
             <div
-              className={`transition-opacity duration-500 mb-12 mt-0 opacity-100 md:transition-opacity ${
+              className={`transition-opacity duration-500 mb-6 mt-0 opacity-100 md:transition-opacity ${
                 isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
-              <div style={{ fontFamily: "'Clash Display'", fontWeight: 600 }} className="overflow-visible">
-                <SplitText
-                  text="Yao Zhou"
-                  tag="h1"
-                  className="text-4xl md:text-5xl lg:text-6xl mb-4 tracking-tight leading-tight italic text-gray-900 overflow-visible"
-                  delay={100}
-                  duration={0.6}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 20 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.9}
-                  rootMargin="0px"
-                />
-              </div>
-              <p className="text-lg md:text-[20px] text-gray-700 mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400 }}>
-                Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
+              <p className="text-[34px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a', fontSize: '18px' }}>
+                I'm a Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
               
               {/* Social Icons */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-8">
                 <a
                   href="https://www.linkedin.com/in/yaozhou5/"
                   target="_blank"
@@ -400,7 +384,7 @@ export default function Home() {
             </div>
 
             {/* Project Titles List - Scroll-linked activation */}
-            <div className="space-y-8 md:space-y-12 pt-12">
+            <div className="space-y-8 md:space-y-12 pt-4">
               {projects.map((project, index) => (
                 <div key={index} className="min-w-0">
                   <Link
@@ -540,15 +524,15 @@ export default function Home() {
           {/* Left Column - Aligned with Selected work titles */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
-              className="text-[32px] md:text-[40px] mb-6 text-gray-900"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+              className="text-[28px] md:text-[40px] mb-6 text-gray-900"
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
             >
               I build things with AI tools.
             </h2>
             
             <p 
-              className="text-base md:text-xl text-gray-700 leading-relaxed"
-              style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              className="text-[34px] md:text-xl text-gray-700 leading-relaxed"
+              style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400, fontSize: '18px' }}
             >
               Since September 2025, I've been independently experimenting with vibe coding through focused two-week sprints. Each project is built within a 14-day window, and I'll be sharing case studies soon.
             </p>
@@ -655,8 +639,8 @@ export default function Home() {
           {/* Left Column - Aligned with Selected work titles and AI tools header */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
-              className="text-[32px] md:text-[40px] text-gray-900 mb-4"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+              className="text-[28px] md:text-[40px] text-gray-900 mb-4"
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
             >
               Writing
             </h2>
