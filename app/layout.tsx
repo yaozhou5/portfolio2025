@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import FontPreloader from "./components/FontPreloader";
 
 export const metadata: Metadata = {
   title: "Yao Zhou - Product Designer",
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <FontPreloader />
+        {children}
+      </body>
     </html>
   );
 }
