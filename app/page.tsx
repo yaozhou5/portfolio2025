@@ -354,7 +354,7 @@ export default function Home() {
                 isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
-              <p className="text-[34px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a', fontSize: '24px' }}>
+              <p className="text-[24px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a' }}>
                 I'm a Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
               
@@ -429,7 +429,7 @@ export default function Home() {
                     </h3>
                   </Link>
                   {activeProjectIndex === index && (
-                    <p className="text-base leading-relaxed transition-opacity duration-300 mt-2 break-words whitespace-normal mb-4 text-gray-700" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, wordWrap: 'break-word', overflowWrap: 'break-word', fontSize: '18px' }}>
+                    <p className="text-[18px] leading-relaxed transition-opacity duration-300 mt-2 break-words whitespace-normal mb-4 text-gray-700" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                       {project.description}
                     </p>
                   )}
@@ -531,8 +531,8 @@ export default function Home() {
             </h2>
             
             <p 
-              className="text-[34px] md:text-xl text-gray-700 leading-relaxed"
-              style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400, fontSize: '18px' }}
+              className="text-[18px] md:text-xl text-gray-700 leading-relaxed"
+              style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
             >
               Since September 2025, I've been independently experimenting with vibe coding through focused two-week sprints. Each project is built within a 14-day window, and I'll be sharing case studies soon.
             </p>
@@ -640,13 +640,13 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
               className="text-[28px] md:text-[40px] text-gray-900 mb-4"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
             >
               Writing
             </h2>
             <p 
-              className="text-sm md:text-base mb-8 md:mb-16 text-gray-700"
-              style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, fontSize: '18px' }}
+              className="text-[18px] md:text-base mb-8 md:mb-16 text-gray-700"
+              style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
             >
               Thoughts on design, building, and working with AI
             </p>
