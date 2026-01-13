@@ -29,9 +29,18 @@ export default function FontPreloader() {
 
     // Wait for fonts to load, then add fonts-loaded class to prevent shifting
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        document.documentElement.classList.add('fonts-loaded');
-      });
+      // Check if Clash Display Semibold (weight 600) is loaded
+      const checkFontsLoaded = async () => {
+        try {
+          await document.fonts.load('600 1em "Clash Display"');
+          await document.fonts.ready;
+          document.documentElement.classList.add('fonts-loaded');
+        } catch (e) {
+          // Fallback if font loading fails
+          document.documentElement.classList.add('fonts-loaded');
+        }
+      };
+      checkFontsLoaded();
     } else {
       // Fallback for browsers without Font Loading API
       setTimeout(() => {

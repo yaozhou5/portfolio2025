@@ -386,7 +386,7 @@ export default function Home() {
             {/* Selected work heading */}
             <h1 
               className="text-[28px] md:text-[34px] mb-4 text-gray-900"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
             >
               Selected work
             </h1>
@@ -534,7 +534,7 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
               className="text-[28px] md:text-[34px] mb-3 text-gray-900"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
             >
               I build things with AI tools.
             </h2>
@@ -649,7 +649,7 @@ export default function Home() {
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
               className="text-[28px] md:text-[34px] text-gray-900 mb-4"
-              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600, fontSize: '28px' }}
             >
               Writing
             </h2>
