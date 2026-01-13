@@ -7,12 +7,10 @@ export default function FontPreloader() {
     // Run immediately, not waiting for mount
     if (typeof window === 'undefined') return;
     
-    // Preload critical fonts to prevent font switching
+    // Preload additional fonts that aren't in HTML head
     const fonts = [
-      { href: '/ClashDisplay-Regular.woff2', type: 'font/woff2' },
       { href: '/ClashDisplay-Medium.woff2', type: 'font/woff2' },
-      { href: '/ClashDisplay-Semibold.woff2', type: 'font/woff2' },
-      { href: '/Post Grotesk.woff', type: 'font/woff' },
+      { href: '/ClashDisplay-Bold.woff2', type: 'font/woff2' },
     ];
 
     fonts.forEach((font) => {
@@ -28,6 +26,18 @@ export default function FontPreloader() {
       link.crossOrigin = 'anonymous';
       document.head.appendChild(link);
     });
+
+    // Wait for fonts to load, then add fonts-loaded class to prevent shifting
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+    } else {
+      // Fallback for browsers without Font Loading API
+      setTimeout(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      }, 100);
+    }
   }, []);
 
   return null;

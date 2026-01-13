@@ -350,16 +350,16 @@ export default function Home() {
           <div className="w-full overflow-visible min-h-0">
             {/* Intro Text - Fades in/out based on hero visibility */}
             <div
-              className={`transition-opacity duration-500 mb-10 mt-[10px] opacity-100 md:transition-opacity ${
+              className={`transition-opacity duration-500 mb-16 mt-0 opacity-100 md:transition-opacity ${
                 isHeroVisible ? "md:opacity-100" : "md:opacity-0"
               }`}
             >
-              <p className="text-[24px] md:text-[30px] mb-6 leading-relaxed" style={{ fontFamily: '"Post Grotesk"', fontWeight: 400, color: '#5a5a5a' }}>
+              <p className="text-[18px] mb-10 leading-relaxed" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, color: 'rgb(90, 90, 90)', fontSize: '18px' }}>
                 I'm a Product Designer with agency, startup, and founder experience, working end-to-end to turn ambiguity into progress.
               </p>
               
               {/* Social Icons */}
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-8 mb-12">
                 <a
                   href="https://www.linkedin.com/in/yaozhou5/"
                   target="_blank"
@@ -383,8 +383,16 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Selected work heading */}
+            <h1 
+              className="text-[28px] md:text-[34px] mb-4 text-gray-900"
+              style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
+            >
+              Selected work
+            </h1>
+
             {/* Project Titles List - Scroll-linked activation */}
-            <div className="space-y-8 md:space-y-12 pt-4">
+            <div className="space-y-10 md:space-y-12">
               {projects.map((project, index) => (
                 <div key={index} className="min-w-0">
                   <Link
@@ -423,13 +431,14 @@ export default function Home() {
                         : "text-gray-600 hover:text-gray-800"
                     }`} style={{ 
                       fontFamily: "'Clash Display'", 
-                      fontWeight: 500
+                      fontWeight: 500,
+                      fontSize: '24px'
                     }}>
                       {project.title}
                     </h3>
                   </Link>
                   {activeProjectIndex === index && (
-                    <p className="text-[18px] leading-relaxed transition-opacity duration-300 mt-2 break-words whitespace-normal mb-4 text-gray-700" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                    <p className="text-[18px] leading-relaxed transition-opacity duration-300 mt-2 break-words whitespace-normal mb-4 text-gray-700" style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, wordWrap: 'break-word', overflowWrap: 'break-word', fontSize: '18px' }}>
                       {project.description}
                     </p>
                   )}
@@ -495,7 +504,7 @@ export default function Home() {
                               opacity: activeProjectIndex === index ? 1 : 0
                             }}
                           >
-                            <h3 className="text-[24px] md:text-[28px] text-white px-4 md:px-6" style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}>
+                            <h3 className="text-[24px] md:text-[24px] text-white px-4 md:px-6" style={{ fontFamily: "'Clash Display'", fontWeight: 500 }}>
                               {project.title}
                             </h3>
                           </div>
@@ -524,15 +533,15 @@ export default function Home() {
           {/* Left Column - Aligned with Selected work titles */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
               <h2 
-              className="text-[28px] md:text-[40px] mb-6 text-gray-900"
+              className="text-[28px] md:text-[34px] mb-3 text-gray-900"
               style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
             >
               I build things with AI tools.
             </h2>
             
             <p 
-              className="text-[18px] md:text-xl text-gray-700 leading-relaxed"
-              style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+              className="text-[18px] text-gray-700 leading-relaxed"
+              style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, fontSize: '18px' }}
             >
               Since September 2025, I've been independently experimenting with vibe coding through focused two-week sprints. Each project is built within a 14-day window, and I'll be sharing case studies soon.
             </p>
@@ -580,8 +589,8 @@ export default function Home() {
                     
                     {/* Description */}
                     <p 
-                      className="text-sm md:text-base text-gray-700 leading-relaxed mb-4 flex-grow"
-                      style={{ fontFamily: "'Post Grotesk', sans-serif", fontWeight: 400 }}
+                      className="text-[18px] text-gray-700 leading-relaxed mb-4 flex-grow"
+                      style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
                     >
                       {project.description}
                     </p>
@@ -639,14 +648,14 @@ export default function Home() {
           {/* Left Column - Aligned with Selected work titles and AI tools header */}
           <div className="w-full md:w-[32%] px-6 md:px-12 mb-8 md:mb-0">
             <h2 
-              className="text-[28px] md:text-[40px] text-gray-900 mb-4"
+              className="text-[28px] md:text-[34px] text-gray-900 mb-4"
               style={{ fontFamily: "'Clash Display'", fontWeight: 600 }}
             >
               Writing
             </h2>
             <p 
-              className="text-[18px] md:text-base mb-8 md:mb-16 text-gray-700"
-              style={{ fontFamily: "'Post Grotesk'", fontWeight: 400 }}
+              className="text-[18px] mb-8 md:mb-16 text-gray-700 leading-relaxed"
+              style={{ fontFamily: "'Post Grotesk'", fontWeight: 400, fontSize: '18px' }}
             >
               Thoughts on design, building, and working with AI
             </p>
