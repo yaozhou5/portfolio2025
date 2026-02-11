@@ -82,7 +82,7 @@ export default function AfterhoursCaseStudy() {
               
               {/* Resume */}
               <a
-                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                href="https://drive.google.com/file/d/160mAIiLtTmJ6ZqMHQG_A9w4m5ypedh_d/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-1.5 rounded-full text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
@@ -132,7 +132,7 @@ export default function AfterhoursCaseStudy() {
                 About
               </Link>
               <a
-                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
+                href="https://drive.google.com/file/d/160mAIiLtTmJ6ZqMHQG_A9w4m5ypedh_d/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-4 py-2 rounded-full text-base text-gray-700"
