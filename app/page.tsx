@@ -66,12 +66,12 @@ export default function Home() {
 
   const vibeCodingProjects = [
     {
-      name: "Habi",
-      description: "Scan your furniture, discover your global IKEA \"twins,\" and explore the world's shared collection with Habi",
-      keyTech: "Base 44",
-      date: "Sep 2025",
-      link: "https://habi.base44.app/",
-      image: "/Habi1.png",
+      name: "The Unfinished Museum",
+      description: "A home for everything you started and never finished.",
+      keyTech: "Cursor",
+      date: "Feb 2026",
+      link: "https://the-unfinished-museum.vercel.app/",
+      image: "/logo-stacked-white.png",
     },
     {
       name: "Straatology",
@@ -80,6 +80,14 @@ export default function Home() {
       date: "Oct 2025",
       link: "#",
       image: "/straatology.png",
+    },
+    {
+      name: "Habi",
+      description: "Scan your furniture, discover your global IKEA \"twins,\" and explore the world's shared collection with Habi",
+      keyTech: "Base 44",
+      date: "Sep 2025",
+      link: "https://habi.base44.app/",
+      image: "/Habi1.png",
     },
     {
       name: "Insight48",
@@ -280,7 +288,7 @@ export default function Home() {
               
               {/* Resume */}
               <a
-                href="https://drive.google.com/file/d/160mAIiLtTmJ6ZqMHQG_A9w4m5ypedh_d/view?usp=sharing"
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-1.5 rounded-full text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
@@ -330,7 +338,7 @@ export default function Home() {
                 About
               </Link>
               <a
-                href="https://drive.google.com/file/d/160mAIiLtTmJ6ZqMHQG_A9w4m5ypedh_d/view?usp=sharing"
+                href="https://drive.google.com/file/d/1x6-Ir7emPiEo1AfzULgPsb55T5uMlubO/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-4 py-2 rounded-full text-base text-gray-700"
@@ -556,11 +564,11 @@ export default function Home() {
                 <div className="bg-white rounded-[30px] overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
                   {/* Image Preview - Top of card */}
                   {project.image ? (
-                    <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden">
+                    <div className="w-full aspect-[4/3] bg-gray-50 overflow-hidden flex items-center justify-center">
                       <img 
                         src={project.image} 
                         alt={project.name}
-                        className="w-full h-full object-cover"
+                        className={project.name === "The Unfinished Museum" ? "w-full h-full object-contain" : "w-full h-full object-cover"}
                       />
                     </div>
                   ) : (
