@@ -74,6 +74,14 @@ export default function Home() {
       image: "/logo-stacked-white.png",
     },
     {
+      name: "Foundry Pantry",
+      description: "AI research lab exploring new tools for indie builders",
+      keyTech: "Cursor + Claude Code",
+      date: "Dec 2025",
+      link: "https://foundry-pantry-ikgbgwyb2-yaozhou555-6245s-projects.vercel.app/",
+      image: "/foundry pantry.png",
+    },
+    {
       name: "Straatology",
       description: "Decode Dutch street names so you'll never get lost again.",
       keyTech: "Lovable",
@@ -104,14 +112,6 @@ export default function Home() {
       date: "Working in Progress",
       link: "#",
       image: "/Dutch Commuter.png",
-    },
-    {
-      name: "Foundry Pantry",
-      description: "AI research lab exploring new tools for indie builders",
-      keyTech: "Cursor + Claude Code",
-      date: "Working in Progress",
-      link: "#",
-      image: "/foundry pantry.png",
     },
   ];
 
